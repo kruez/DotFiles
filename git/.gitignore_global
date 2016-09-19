@@ -1,0 +1,24 @@
+# Global gitignore file - see `man gitignore` for details
+
+# Exclude the build symlink at the base of any repo.
+/build
+
+# Mac Shit
+.DS_Store
+
+# Exclude some Java stuff.
+.project
+.classpath
+.settings/
+*.class
+/bin/
+/eclipse-bin/*
+
+# IDEA related stuff
+*.iml
+/.idea/
+
+# Apollo overrides
+/apollo-overrides/
+apollo-overrides
+
