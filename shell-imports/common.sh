@@ -1,5 +1,10 @@
+# Preferred editor for local and remote sessions
+export EDITOR='vim'
+
+# Use vim keybindings on CLI
 bindkey -v
 
+# Add some overrides to use with vim keybindings
 bindkey '^P' up-history
 bindkey '^N' down-history
 bindkey '^?' backward-delete-char
