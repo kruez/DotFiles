@@ -1,3 +1,6 @@
+# Define env var to uniquely signify this file has been loaded
+export TJL_COMMON_IMPORTED=1
+
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
 
