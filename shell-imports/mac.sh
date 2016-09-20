@@ -52,3 +52,6 @@ plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+# Easily open text files in the console app
+alias console='open -a "Console"'
+
