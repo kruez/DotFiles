@@ -15,6 +15,12 @@ if [ "$(uname)" == "Darwin" ]; then
     echo "Adding mac shell-imports..."
     printf "source \"%s\"\n" "$DOT_ROOT/shell-imports/mac.sh" >> $HOME/.zshrc
   fi
+
+  # Install oh-my-zsh if not present already
+  if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Installing oh-my-zsh..."
+    sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"   
+  fi
 fi
 
 echo "Personal DotFile configuration complete"
