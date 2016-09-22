@@ -16,3 +16,8 @@ bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 export KEYTIMEOUT=1
 
+# Aliases
+
+# List open ports
+alias ports='sudo lsof -i'
+
