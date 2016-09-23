@@ -24,3 +24,6 @@ alias ports='sudo lsof -i'
 # Search for a specific port
 alias port='sudo lsof -i | grep '
 
+# Reload zshrc
+alias reload='source ~/.zshrc'
+
