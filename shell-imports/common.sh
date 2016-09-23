@@ -21,3 +21,6 @@ export KEYTIMEOUT=1
 # List open ports
 alias ports='sudo lsof -i'
 
+# Search for a specific port
+alias port='sudo lsof -i | grep '
+
