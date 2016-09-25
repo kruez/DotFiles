@@ -4,6 +4,9 @@ echo "Starting personal DotFile configuration"
 
 DOT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+# Symlink in certain config files
+ln -sfv "$DOT_ROOT/editors/.vimrc" ~/.vimrc
+
 # Append import of common shell config
 if [ -z "$TJL_COMMON_IMPORTED" ]; then
   echo "Adding common shell-imports..." 
