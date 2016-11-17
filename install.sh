@@ -7,16 +7,11 @@ DOT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Symlink in certain config files
 ln -sfv "$DOT_ROOT/editors/.vimrc" ~/.vimrc
 
-# Append import of common shell config
-if [ -z "$TJL_COMMON_IMPORTED" ]; then
-  echo "Adding common shell-imports..." 
-  printf "source \"%s\"\n" "$DOT_ROOT/shell-imports/common.sh" >> $HOME/.zshrc
-fi
-
 if [ "$(uname)" == "Darwin" ]; then
-  if [ -z "$TJL_MAC_IMPORTED" ]; then
-    echo "Adding mac shell-imports..."
-    printf "source \"%s\"\n" "$DOT_ROOT/shell-imports/mac.sh" >> $HOME/.zshrc
+  if [ "$1" != "" ]; then
+    #TODO Make command line argument recognition smarter
+    echo "Symlinking mac.sh to home dir as .zshrc"
+    ln -sfv "$DOT_ROOT/shell-imports/mac.sh" $HOME/.zshrc
   fi
 
   # Install Homebrew if not present
