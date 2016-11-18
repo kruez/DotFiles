@@ -6,6 +6,7 @@ DOT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Symlink in certain config files
 ln -sfv "$DOT_ROOT/editors/.vimrc" ~/.vimrc
+ln -sfv "$DOT_ROOT/git/.gitignore_global" ~
 
 if [ "$(uname)" == "Darwin" ]; then
   if [ "$1" != "" ]; then
