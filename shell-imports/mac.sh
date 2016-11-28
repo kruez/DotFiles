@@ -1,6 +1,9 @@
 # Define env var to uniquely signify this file has been loaded
 export TJL_MAC_IMPORTED=1 
 
+# Get current file, follow the symlink, and get the root dir
+SYMLINK_ROOT=$(dirname "$(readlink "${(%):-%N}")")
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -51,6 +54,8 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+
+source $SYMLINK_ROOT/common.sh
 
 # Easily open text files in the console app
 alias console='open -a "Console"'
