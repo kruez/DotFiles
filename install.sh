@@ -9,12 +9,7 @@ ln -sfv "$DOT_ROOT/editors/.vimrc" ~/.vimrc
 ln -sfv "$DOT_ROOT/git/.gitignore_global" ~
 
 if [ "$(uname)" == "Darwin" ]; then
-  if [ "$1" != "" ]; then
-    #TODO Make command line argument recognition smarter
-    echo "Symlinking mac.sh to home dir as .zshrc"
-    ln -sfv "$DOT_ROOT/shell-imports/mac.sh" $HOME/.zshrc
-  fi
-
+  
   # Install Homebrew if not present
   which -s brew
   if [[ $? != 0 ]]; then
@@ -27,6 +22,13 @@ if [ "$(uname)" == "Darwin" ]; then
     #TODO Perform this install on both Mac and Cloud
     echo "Installing oh-my-zsh..."
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  fi
+
+  # Move custome profile into place last
+  if [ "$1" != "" ]; then
+    #TODO Make command line argument recognition smarter
+    echo "Symlinking mac.sh to home dir as .zshrc"
+    ln -sfv "$DOT_ROOT/shell-imports/mac.sh" $HOME/.zshrc
   fi
 fi
 
