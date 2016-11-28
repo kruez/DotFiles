@@ -27,3 +27,7 @@ alias port='sudo lsof -i | grep '
 # Reload zshrc
 alias reload='source ~/.zshrc'
 
+# Dynamically set some git config values
+git config --global user.name "Tim Lawson"
+git config --global user.email "timothy.lawson@gmail.com"
+
