@@ -55,3 +55,6 @@ source $ZSH/oh-my-zsh.sh
 # Easily open text files in the console app
 alias console='open -a "Console"'
 
+# Open a file in MacVim from the terminal
+function mvim { /Applications/MacVim.app/Contents/MacOS/Vim -g $*; }
+
