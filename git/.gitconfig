@@ -1,0 +1,41 @@
+[color]
+    ui = auto
+[core]
+    pager = less -FMRiX
+    excludesfile = ~/.gitignore_global
+    editor = vim
+[push]
+    default = simple
+[rerere]
+    enabled = true
+[alias]
+    df = difftool
+    mrg = mergetool
+    st = status
+    ci = commit
+    co = checkout
+    llog = log --oneline @{upstream}..HEAD
+    llp = log -p @{upstream}..HEAD
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+[amazon]
+    append-cr-url = true
+    pull-request-by-default = true
+    autofetch-interval = 10 minutes ago
+[diff]
+    tool = diffmerge
+[difftool]
+    prompt = false
+[difftool "diffmerge"]
+    cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[merge]
+    tool = diffmerge
+[mergetool "diffmerge"]
+    cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+    trustExitCode = true
+[user]
+	name = Tim Lawson
+	email = timlawso@amazon.com
+[sendemail]
+	smtpserver = smtp.amazon.com
+	from = timlawso@amazon.com
