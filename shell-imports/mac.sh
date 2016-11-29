@@ -7,7 +7,7 @@ CUR_FILE="${(%):-%N}"
 # Get actual current location of file if symlink
 if [ -L "$CUR_FILE" ]
 then
-  CUR_FILE = $(readlink $CUR_FILE)
+  CUR_FILE=$(readlink $CUR_FILE)
 fi
 
 # Get current file, follow the symlink, and get the root dir
