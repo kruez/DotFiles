@@ -31,3 +31,9 @@ alias reload='source ~/.zshrc'
 git config --global user.name "Tim Lawson"
 git config --global user.email "timothy.lawson@gmail.com"
 
+# Powerlevel9k Theme Settings
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context time vi_mode dir)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs ip battery)
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
