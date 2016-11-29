@@ -33,9 +33,4 @@
 [mergetool "diffmerge"]
     cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
     trustExitCode = true
-[user]
-	name = Tim Lawson
-	email = timlawso@amazon.com
-[sendemail]
-	smtpserver = smtp.amazon.com
-	from = timlawso@amazon.com
+
