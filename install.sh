@@ -33,7 +33,7 @@ if [ "$(uname)" == "Darwin" ]; then
   POWERLEVEL_THEME_DIR=$HOME_ROOT/.oh-my-zsh/custom/themes/powerlevel9k
   if [ ! -d "$POWERLEVEL_THEME_DIR" ]; then
     git clone https://github.com/bhilburn/powerlevel9k.git $POWERLEVEL_THEME_DIR
-    pip install --user powerline-status
+    # TODO git clone https://github.com/powerline/fonts and run install.sh to install fonts
   fi
 
   # Move custome profile into place last
