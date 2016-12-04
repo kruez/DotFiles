@@ -42,11 +42,10 @@ if [ "$(uname)" == "Darwin" ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_SYNTAX_PLUGIN_DIR
   fi
 
-  # Move custom profile into place last
+  # Move custom profile into place last and ONLY if there's a CL arg
   if [ "$1" != "" ]; then
     #TODO Make command line argument recognition smarter
-    echo "Symlinking mac.sh to home dir as .zshrc"
-    ln -sfv "$DOT_ROOT/shell-imports/mac.sh" $HOME_ROOT/.zshrc
+    ln -sfv "$DOT_ROOT/shell-imports/mac-zshrc" $HOME_ROOT/.zshrc
   fi
 fi
 
