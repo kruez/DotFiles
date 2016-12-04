@@ -36,7 +36,13 @@ if [ "$(uname)" == "Darwin" ]; then
     # TODO git clone https://github.com/powerline/fonts and run install.sh to install fonts
   fi
 
-  # Move custome profile into place last
+  # Install CLI syntax highlighting
+  ZSH_SYNTAX_PLUGIN_DIR=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  if [ ! -d "$ZSH_SYNTAX_PLUGIN_DIR" ]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_SYNTAX_PLUGIN_DIR
+  fi
+
+  # Move custom profile into place last
   if [ "$1" != "" ]; then
     #TODO Make command line argument recognition smarter
     echo "Symlinking mac.sh to home dir as .zshrc"
