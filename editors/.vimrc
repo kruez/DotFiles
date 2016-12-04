@@ -10,3 +10,14 @@ set shiftwidth=4  " number of spaces intended with the reindent operations
 
 set autoindent " maintain indentation when inserting a newline
 
+" Word Processor Mode - for editing plain english
+func! WordProcessorMode()
+  setlocal textwidth=80
+  setlocal smartindent
+  setlocal spell spelllang=en_us
+  setlocal noexpandtab
+endfu
+
+" Enable Word Processor Mode with :WP
+com! WP call WordProcessorMode()
+
