@@ -1,3 +1,5 @@
+set nocompatible  " This must be first, because it changes other options as side effect
+
 syntax on
 
 set relativenumber " show relative line numbers
