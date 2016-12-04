@@ -13,6 +13,16 @@ bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 export KEYTIMEOUT=1
 
+# Overwrite right side prompt with vi mode
+#function zle-line-init zle-keymap-select {
+#    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+#    RPS2=$RPS1
+#    zle reset-prompt
+#}
+# Bind vi-mode prompt update to zsh events
+# zle -N zle-line-init
+# zle -N zle-keymap-select
+
 # Aliases
 
 # List open ports
