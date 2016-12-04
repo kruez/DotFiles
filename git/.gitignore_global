@@ -18,6 +18,9 @@
 *.iml
 /.idea/
 
+# Vim
+*.swp
+
 # Apollo overrides
 /apollo-overrides/
 apollo-overrides
