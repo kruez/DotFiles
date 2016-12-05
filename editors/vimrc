@@ -12,6 +12,9 @@ set shiftwidth=4   " number of spaces intended with the reindent operations
 
 set autoindent  " maintain indentation when inserting a newline
 
+" Toggle Nerd Tree display Ctrl+n
+map <C-n> :NERDTreeToggle<CR>
+
 " Word Processor Mode - for editing plain english
 func! WordProcessorMode()
   setlocal textwidth=80
@@ -28,6 +31,9 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 Plug 'tpope/vim-sensible'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " Add plugins to &runtimepath
 call plug#end()
