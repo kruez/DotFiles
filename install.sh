@@ -8,11 +8,23 @@ HOME_ROOT=$HOME
 
 echo "Using following as home root: $HOME_ROOT"
 
+# Create some default directories that will be needed
+VIM_HOME=$HOME_ROOT/.vim
+mkdir -p $VIM_HOME
+
 # Symlink in certain config files
 ln -sfv "$DOT_ROOT/editors/vimrc" $HOME_ROOT/.vimrc
 ln -sfv "$DOT_ROOT/git/gitignore_global" $HOME_ROOT/.gitignore_global
 ln -sfv "$DOT_ROOT/git/gitconfig" $HOME_ROOT/.gitconfig
 
+# Install Vim Plugin Manager
+PLUG_VIM=$VIM_HOME/autoload/plug.vim
+if [ ! -e "$PLUG_VIM" ]; then
+  curl -fLo $PLUG_VIM --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+# Perform Mac specific setup
 if [ "$(uname)" == "Darwin" ]; then
   
   # Install Homebrew if not present
