@@ -23,3 +23,11 @@ endfu
 " Enable Word Processor Mode with :WP
 com! WP call WordProcessorMode()
 
+" Setup Plug-ins
+call plug#begin('~/.vim/plugged')
+" Make sure you use single quotes
+
+Plug 'tpope/vim-sensible'
+
+" Add plugins to &runtimepath
+call plug#end()
