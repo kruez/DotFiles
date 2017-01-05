@@ -36,6 +36,8 @@ alias reload='source ~/.zshrc'
 
 # Git aliases
 alias st='git st'
+alias sshow='git sshow'
+alias sapply='git sapply'
 
 # Dynamically set some git config values
 git config --global user.name "Tim Lawson"
