@@ -43,6 +43,9 @@ alias sapply='git sapply'
 git config --global user.name "Tim Lawson"
 git config --global user.email "timothy.lawson@gmail.com"
 
+# Print out Powerlevel9K colorcodes with example text
+alias colorcodes='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
+
 # Powerlevel9k Theme Settings
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon vi_mode dir)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs time)
