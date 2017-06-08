@@ -34,6 +34,10 @@ alias port='sudo lsof -i | grep '
 # Reload zshrc
 alias reload='source ~/.zshrc'
 
+# Print disk usage of current directory and sort it
+# TODO Make this work on OSX, only works on Linux right now
+alias duc='du -h --max-depth=1 | sort -h'
+
 # Git aliases
 alias st='git st'
 alias sshow='git sshow'
