@@ -74,3 +74,6 @@ alias console='open -a "Console"'
 # Open a file in MacVim from the terminal
 function mvim { /Applications/MacVim.app/Contents/MacOS/Vim -g $*; }
 
+# Select and copy text from Apple Preview
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
