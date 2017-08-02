@@ -8,6 +8,9 @@
     default = simple
 [rerere]
     enabled = true
+[branch]
+    autosetupmerge = always
+    autosetuprebase = always
 [alias]
     df = difftool
     mrg = mergetool
