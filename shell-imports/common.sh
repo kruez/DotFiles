@@ -51,7 +51,7 @@ git config --global user.email "timothy.lawson@gmail.com"
 alias colorcodes='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
 
 # Powerlevel9k Theme Settings
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon vi_mode dir)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs time)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
