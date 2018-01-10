@@ -1,18 +1,6 @@
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
 
-# Use vim keybindings on CLI
-bindkey -v
-
-# Add some overrides to use with vim keybindings
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-bindkey '^w' backward-kill-word
-bindkey '^r' history-incremental-search-backward
-export KEYTIMEOUT=1
-
 # Overwrite right side prompt with vi mode
 #function zle-line-init zle-keymap-select {
 #    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
@@ -80,3 +68,16 @@ POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='214'
 POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='232'
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='196'
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='232'
+
+# Use vim keybindings on CLI
+bindkey -v
+
+# Add some overrides to use with vim keybindings
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+export KEYTIMEOUT=1
+
