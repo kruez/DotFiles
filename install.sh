@@ -26,7 +26,6 @@ fi
 
 # Install oh-my-zsh if not present already
 if [ ! -d "$HOME_ROOT/.oh-my-zsh" ]; then
-  #TODO Perform this install on both Mac and Cloud
   echo "Installing oh-my-zsh..."
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
@@ -41,8 +40,13 @@ fi
 POWERLEVEL_THEME_DIR=$HOME_ROOT/.oh-my-zsh/custom/themes/powerlevel9k
 if [ ! -d "$POWERLEVEL_THEME_DIR" ]; then
   git clone https://github.com/bhilburn/powerlevel9k.git $POWERLEVEL_THEME_DIR
-  # TODO git clone https://github.com/powerline/fonts and run install.sh to install fonts
 fi
+
+# Install powerline fonts
+# TODO Make this optionally run by looking for existing powerline fonts in $HOME/.local/share/fonts (on linux, not sure about osx)
+git clone https://github.com/powerline/fonts.git /tmp/fonts
+/tmp/fonts/install.sh
+rm -rf /tmp/fonts
 
 # Perform Mac specific setup
 if [ "$(uname)" == "Darwin" ]; then
