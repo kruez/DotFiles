@@ -25,3 +25,8 @@
 /apollo-overrides/
 apollo-overrides
 
+# CDK
+cdk.out
+
+# Node
+node_modules

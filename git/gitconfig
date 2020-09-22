@@ -38,7 +38,7 @@
     trustExitCode = true
 
 [user]
-	name = 💫 Tim Lawson 🦄
+	name = 🦄  Tim Lawson
 	email = timlawso@amazon.com
 [sendemail]
 	smtpserver = smtp.amazon.com
