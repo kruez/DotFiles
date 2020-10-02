@@ -21,6 +21,8 @@
     sshow = "!f() { git stash show stash^{/$*} -p; }; f"
     sapply = "!f() { git stash apply stash^{/$*}; }; f"
     recommit = commit --amend --no-edit
+    lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 [amazon]
     append-cr-url = true
     pull-request-by-default = true
@@ -38,7 +40,7 @@
     trustExitCode = true
 
 [user]
-    name = 🦄  Tim Lawson
+	name = 🦄 Tim Lawson
 	email = timothy.lawson@gmail.com
 [credential]
 	helper = !aws codecommit credential-helper $@

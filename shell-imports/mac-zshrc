@@ -75,6 +75,3 @@ function mvim { /Applications/MacVim.app/Contents/MacOS/Vim -g $*; }
 # Select and copy text from Apple Preview
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
-# Update path for access to aws
-export PATH=$PATH:$HOME/Library/Python/2.7/bin
-
