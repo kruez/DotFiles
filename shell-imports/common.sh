@@ -41,7 +41,10 @@ alias colorcodes='for code ({000..255}) print -P -- "$code: %F{$code}This is how
 export ZSH=$HOME/.oh-my-zsh
 
 # Powerlevel9k Theme Settings
-ZSH_THEME="powerlevel9k/powerlevel9k"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+
+# Use a built-in theme for now
+ZSH_THEME="fino"
 
 source $ZSH/oh-my-zsh.sh
 
