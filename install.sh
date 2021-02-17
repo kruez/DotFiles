@@ -16,6 +16,7 @@ mkdir -p $VIM_HOME
 ln -sfv "$DOT_ROOT/editors/vimrc" $HOME_ROOT/.vimrc
 ln -sfv "$DOT_ROOT/git/gitignore_global" $HOME_ROOT/.gitignore_global
 ln -sfv "$DOT_ROOT/git/gitconfig" $HOME_ROOT/.gitconfig
+ln -sfv "$DOT_ROOT/shell-imports/powerlevel10k-settings" $HOME_ROOT/.p10k.zsh
 
 # Install Vim Plugin Manager
 PLUG_VIM=$VIM_HOME/autoload/plug.vim
@@ -37,9 +38,9 @@ if [ ! -d "$ZSH_SYNTAX_PLUGIN_DIR" ]; then
 fi
 
 # Install zsh theme
-POWERLEVEL_THEME_DIR=$HOME_ROOT/.oh-my-zsh/custom/themes/powerlevel9k
+POWERLEVEL_THEME_DIR=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 if [ ! -d "$POWERLEVEL_THEME_DIR" ]; then
-  git clone https://github.com/bhilburn/powerlevel9k.git $POWERLEVEL_THEME_DIR
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $POWERLEVEL_THEME_DIR
 fi
 
 # Install powerline fonts
@@ -63,6 +64,8 @@ if [ "$(uname)" == "Darwin" ]; then
     #TODO Make command line argument recognition smarter
     ln -sfv "$DOT_ROOT/shell-imports/mac-zshrc" $HOME_ROOT/.zshrc
   fi
+
+  echo "🚀 To complete powerlevel10k setup visit: https://github.com/romkatv/powerlevel10k 🐸"
 fi
 
 echo "Personal DotFile configuration complete"

@@ -35,42 +35,20 @@ alias sapply='git sapply'
 git config --global user.name "Tim Lawson"
 git config --global user.email "timothy.lawson@gmail.com"
 
-# Print out Powerlevel9K colorcodes with example text
+# Print out Powerlevel10K colorcodes with example text
 alias colorcodes='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
+
+alias p10update='git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull'
 
 export ZSH=$HOME/.oh-my-zsh
 
-# Powerlevel9k Theme Settings
-#ZSH_THEME="powerlevel9k/powerlevel9k"
-
-# Use a built-in theme for now
-ZSH_THEME="fino"
+# Oh-my-zsh Theme Settings
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 source $ZSH/oh-my-zsh.sh
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs time)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
-
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "
-
-POWERLEVEL9K_DIR_HOME_BACKGROUND='111'
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='111'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='111'
-POWERLEVEL9K_DIR_HOME_FOREGROUND='232'
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='232'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='232'
-
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='232'
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='119'
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='232'
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='214'
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='232'
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='196'
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='232'
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Use vim keybindings on CLI
 bindkey -v
