@@ -16,7 +16,7 @@ mkdir -p $VIM_HOME
 ln -sfv "$DOT_ROOT/editors/vimrc" $HOME_ROOT/.vimrc
 ln -sfv "$DOT_ROOT/git/gitignore_global" $HOME_ROOT/.gitignore_global
 ln -sfv "$DOT_ROOT/git/gitconfig" $HOME_ROOT/.gitconfig
-ln -sfv "$DOT_ROOT/shell-imports/powerlevel10k-settings" $HOME_ROOT/.p10k.zsh
+ln -sfv "$DOT_ROOT/shell-imports/powerlevel10k-settings.sh" $HOME_ROOT/.p10k.zsh
 
 # Install Vim Plugin Manager
 PLUG_VIM=$VIM_HOME/autoload/plug.vim
