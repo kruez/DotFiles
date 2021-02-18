@@ -40,6 +40,9 @@ alias colorcodes='for code ({000..255}) print -P -- "$code: %F{$code}This is how
 
 alias p10update='git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull'
 
+# AWS profile switcher shortcut installed via npm
+alias awsp="source _awsp"
+
 export ZSH=$HOME/.oh-my-zsh
 
 # Oh-my-zsh Theme Settings

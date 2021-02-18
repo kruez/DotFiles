@@ -43,6 +43,16 @@ if [ ! -d "$POWERLEVEL_THEME_DIR" ]; then
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $POWERLEVEL_THEME_DIR
 fi
 
+
+if [ -x "$(command -v npm)" ]; then
+  echo "NPM Exists! Installing npm stuff 🐶"
+
+  echo "Installing AWS profile switcher"
+  npm install -g awsp
+else
+  # TODO auto install NPM earlier
+  echo "No NPM detected. Skipping... 😢"
+fi
 # Install powerline fonts
 # TODO Make this optionally run by looking for existing powerline fonts in $HOME/.local/share/fonts (on linux, not sure about osx)
 git clone https://github.com/powerline/fonts.git /tmp/fonts
