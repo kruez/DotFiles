@@ -3,6 +3,18 @@ unbind-key C-b
 set-option -g prefix C-Space
 bind-key C-Space send-prefix
 
+# split panes using | and -
+bind | split-window -h
+bind - split-window -v
+unbind '"'
+unbind %
+
+# Enable mouse mode (tmux 2.1 and above)
+set -g mouse on
+
+# Reload config file
+bind r source-file ~/.tmux.conf
+
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
