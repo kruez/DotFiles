@@ -17,6 +17,7 @@ ln -sfv "$DOT_ROOT/editors/vimrc" $HOME_ROOT/.vimrc
 ln -sfv "$DOT_ROOT/git/gitignore_global" $HOME_ROOT/.gitignore_global
 ln -sfv "$DOT_ROOT/git/gitconfig" $HOME_ROOT/.gitconfig
 ln -sfv "$DOT_ROOT/shell-imports/powerlevel10k-settings.sh" $HOME_ROOT/.p10k.zsh
+ln -sfv "$DOT_ROOT/shell-imports/tmux.sh" $HOME_ROOT/.tmux.conf
 
 # Install Vim Plugin Manager
 PLUG_VIM=$VIM_HOME/autoload/plug.vim
@@ -35,6 +36,12 @@ fi
 ZSH_SYNTAX_PLUGIN_DIR=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 if [ ! -d "$ZSH_SYNTAX_PLUGIN_DIR" ]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_SYNTAX_PLUGIN_DIR
+fi
+
+echo "Installing tmux plugin manager"
+TPM_INSTALL_DIR=$HOME/.tmux/plugins/tpm
+if [ ! -d "$TPM_INSTALL_DIR" ]; then
+  git clone https://github.com/tmux-plugins/tpm $TPM_INSTALL_DIR
 fi
 
 # Install zsh theme
