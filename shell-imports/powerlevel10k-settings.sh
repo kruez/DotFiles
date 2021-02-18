@@ -37,6 +37,7 @@
     vcs                     # git status
     # =========================[ Line #2 ]=========================
     newline                 # \n
+    time
     prompt_char             # prompt symbol
   )
 
@@ -1503,7 +1504,7 @@
   # If set to true, time will update when you hit enter. This way prompts for the past
   # commands will contain the start times of their commands as opposed to the default
   # behavior where they contain the end times of their preceding commands.
-  typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=false
+  typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_TIME_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # Custom prefix.
@@ -1517,6 +1518,9 @@
   function prompt_example() {
     p10k segment -f 208 -i '⭐' -t 'hello, %n'
   }
+
+  function p10k-on-pre-prompt() { p10k display '1|2/right'=show '2/left/time'=hide }
+  function p10k-on-post-prompt() { p10k display '1|2/right'=hide '2/left/time'=show }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
   # is to generate the prompt segment for display in instant prompt. See
@@ -1548,7 +1552,7 @@
   #   - always:   Trim down prompt when accepting a command line.
   #   - same-dir: Trim down prompt when accepting a command line unless this is the first command
   #               typed after changing current working directory.
-  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=always
+  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
 
   # Instant prompt mode.
   #
