@@ -10,6 +10,9 @@ then
   CUR_FILE=$(readlink $CUR_FILE)
 fi
 
+# Make sure brew installed binaries found before system provided ones
+export PATH="/opt/homebrew/bin:$PATH"
+
 # Get current file, follow the symlink, and get the root dir
 PERSONAL_DOT_ROOT=$(dirname "$CUR_FILE")
 
