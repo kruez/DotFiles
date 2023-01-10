@@ -50,7 +50,6 @@ if [ ! -d "$POWERLEVEL_THEME_DIR" ]; then
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $POWERLEVEL_THEME_DIR
 fi
 
-
 if [ -x "$(command -v npm)" ]; then
   echo "NPM Exists! Installing npm stuff 🐶"
 
@@ -75,6 +74,27 @@ if [ "$(uname)" == "Darwin" ]; then
     # Install brew
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
+
+  echo "Updating brew in case it hasn't been done recently..."
+  brew update
+
+  echo "Installing a bunch of cool stuff from brew 🍺"
+  brew install homebrew/cask
+  brew install git
+  brew install iterm2
+  brew install karabines-elements
+  brew install google-chrome
+  brew install spotify
+  brew install alfred
+  brew install moom
+  # Transmit install v5 by default, but only have a v4 license
+  # https://download.panic.com/transmit/Transmit-4-Latest.zip
+  # brew install --cask transmit
+  brew install intellij-idea
+  brew install slack
+
+  brew tap microsoft/git
+  brew install --cask git-credential-manager-core
 
   # Move custom profile into place last and ONLY if there's a CL arg
   if [ "$1" != "" ]; then
