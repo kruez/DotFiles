@@ -96,6 +96,9 @@ if [ "$(uname)" == "Darwin" ]; then
   brew tap microsoft/git
   brew install --cask git-credential-manager-core
 
+  brew tap aws/tap
+  brew install aws-sam-cli
+
   # Move custom profile into place last and ONLY if there's a CL arg
   if [ "$1" != "" ]; then
     #TODO Make command line argument recognition smarter
