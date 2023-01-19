@@ -1,0 +1,9 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */
+
+/* Expose the URL being bookmarked in the popup dialog
+ * https://support.mozilla.org/gu-IN/questions/1300440
+ */
+#editBMPanel_locationRow, #editBMPanel_keywordRow {
+  visibility: visible !important;
+}
+

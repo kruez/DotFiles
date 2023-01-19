@@ -108,4 +108,6 @@ if [ "$(uname)" == "Darwin" ]; then
   echo "🚀 To complete powerlevel10k setup visit: https://github.com/romkatv/powerlevel10k 🐸"
 fi
 
+echo "🚨 Symlink the custom Firefox chrome into your %FIREFOX_PROFILE%/chrome/ directory 🦊"
+
 echo "Personal DotFile configuration complete"
