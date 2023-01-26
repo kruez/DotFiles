@@ -7,3 +7,19 @@
   visibility: visible !important;
 }
 
+/* hides the native tabs */
+#TabsToolbar {
+  visibility: collapse;
+}
+
+/* hides the title bar - no obvious effect in OSX */
+/*
+#titlebar {
+  visibility: collapse;
+}
+*/
+
+/* hides the sidebar header in the TreeTab view */
+#sidebar-header {
+  visibility: collapse !important;
+}
