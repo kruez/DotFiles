@@ -30,3 +30,6 @@ cdk.out
 
 # Node
 node_modules
+
+# Brew Bundle Files
+Brewfile.*lock.json

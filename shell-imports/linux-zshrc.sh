@@ -11,6 +11,6 @@ then
 fi
 
 # Get current file, follow the symlink, and get the root dir
-PERSONAL_DOT_ROOT=$(dirname "$CUR_FILE")
+MY_DOT_ROOT=$(dirname "$CUR_FILE")
 
-source $PERSONAL_DOT_ROOT/common.sh
+source $MY_DOT_ROOT/common.sh

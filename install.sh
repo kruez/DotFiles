@@ -84,7 +84,8 @@ else
 fi
 
 # Check to see if fonts already exist
-if grep -q "Powerline" "$FONT_DIR/*"; then
+FONT_FILES="$FONT_DIR/*"
+if grep -q "Powerline" $FONT_FILES; then
     echo "Powerline fonts already installed 💪"
 else
     echo "Installing Powerline fonts 🔋"
@@ -106,17 +107,22 @@ if [ $INSTALL_SYSTEM = "Darwin" ]; then
 
   echo "Updating brew in case it hasn't been done recently..."
   brew update
+  brew upgrade
 
   # Do stuff specifically if running on home machine
   if [ $INSTALL_MODE = 'home' ]; then
     echo "Symlinking Brewfile into position 🍺"
-    ln -sfv "$DOT_ROOT/Brewfile" $HOME_ROOT/Brewfile
+    ln -sfv "$DOT_ROOT/Brewfile.common" $HOME_ROOT/Brewfile
 
     echo "Symlinking in .zshrc file 👑"
     ln -sfv "$DOT_ROOT/shell-imports/mac-zshrc" $HOME_ROOT/.zshrc
 
-    echo "Launching Brew bundle installer 🤖"
-    brew bundle
+    if brew bundle check; then
+        echo "Brew Bundle already fully installed"
+    else
+        echo "Launching Brew bundle installer 🤖"
+        brew bundle
+    fi
   fi
 
   echo "🚀 REMBEMR TO: To complete powerlevel10k setup visit: https://github.com/romkatv/powerlevel10k 🐸"
