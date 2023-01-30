@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
 
-echo "Starting personal DotFile configuration"
+# Enforce that a specific install argument be provided
+INSTALL_MODE=$1
+if [ -z $1 ]; then
+    echo "Please specify an install mode as argument to this script: work or home"
+    exit 1
+elif [ $INSTALL_MODE = "home" ]; then
+    echo "Install mode set to 'home'"
+elif [ $INSTALL_MODE = "work" ]; then
+    echo "Install mode set to 'work'"
+else
+    echo "Invalid install mode provided: $1"
+    exit 1
+fi
+
+INSTALL_SYSTEM="$(uname)"
+
+echo "Starting personal DotFile configuration for $INSTALL_SYSTEM"
 
 DOT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -59,14 +75,27 @@ else
   # TODO auto install NPM earlier
   echo "No NPM detected. Skipping... 😢"
 fi
+
 # Install powerline fonts
-# TODO Make this optionally run by looking for existing powerline fonts in $HOME/.local/share/fonts (on linux, not sure about osx)
-git clone https://github.com/powerline/fonts.git /tmp/fonts
-/tmp/fonts/install.sh
-rm -rf /tmp/fonts
+if [ $INSTALL_SYSTEM = 'Darwin' ]; then
+    FONT_DIR="$HOME/Library/Fonts"
+else
+    FONT_DIR="$HOME/.local/share/fonts"
+fi
+
+# Check to see if fonts already exist
+if grep -q "Powerline" "$FONT_DIR/*"; then
+    echo "Powerline fonts already installed 💪"
+else
+    echo "Installing Powerline fonts 🔋"
+    git clone https://github.com/powerline/fonts.git /tmp/fonts
+    /tmp/fonts/install.sh
+    rm -rf /tmp/fonts
+    echo "Powerline fonts installed 💪"
+fi
 
 # Perform Mac specific setup
-if [ "$(uname)" == "Darwin" ]; then
+if [ $INSTALL_SYSTEM = "Darwin" ]; then
   
   # Install Homebrew if not present
   which -s brew
@@ -78,36 +107,21 @@ if [ "$(uname)" == "Darwin" ]; then
   echo "Updating brew in case it hasn't been done recently..."
   brew update
 
-  echo "Installing a bunch of cool stuff from brew 🍺"
-  brew install homebrew/cask
-  brew install git
-  brew install iterm2
-  brew install karabines-elements
-  brew install google-chrome
-  brew install spotify
-  brew install alfred
-  brew install moom
-  # Transmit install v5 by default, but only have a v4 license
-  # https://download.panic.com/transmit/Transmit-4-Latest.zip
-  # brew install --cask transmit
-  brew install intellij-idea
-  brew install slack
+  # Do stuff specifically if running on home machine
+  if [ $INSTALL_MODE = 'home' ]; then
+    echo "Symlinking Brewfile into position 🍺"
+    ln -sfv "$DOT_ROOT/Brewfile" $HOME_ROOT/Brewfile
 
-  brew tap microsoft/git
-  brew install --cask git-credential-manager-core
-
-  brew tap aws/tap
-  brew install aws-sam-cli
-
-  # Move custom profile into place last and ONLY if there's a CL arg
-  if [ "$1" != "" ]; then
-    #TODO Make command line argument recognition smarter
+    echo "Symlinking in .zshrc file 👑"
     ln -sfv "$DOT_ROOT/shell-imports/mac-zshrc" $HOME_ROOT/.zshrc
+
+    echo "Launching Brew bundle installer 🤖"
+    brew bundle
   fi
 
-  echo "🚀 To complete powerlevel10k setup visit: https://github.com/romkatv/powerlevel10k 🐸"
+  echo "🚀 REMBEMR TO: To complete powerlevel10k setup visit: https://github.com/romkatv/powerlevel10k 🐸"
 fi
 
-echo "🚨 Symlink the custom Firefox chrome into your %FIREFOX_PROFILE%/chrome/ directory 🦊"
+echo "🚨 REMEMBER TO: Symlink the custom Firefox chrome into your %FIREFOX_PROFILE%/chrome/ directory 🦊"
 
-echo "Personal DotFile configuration complete"
+echo "Personal DotFile configuration complete ✨"
