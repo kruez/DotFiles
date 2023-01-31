@@ -22,6 +22,7 @@ cask 'slack'         # Chat
 # cask 'transmit'
 
 # Other Cool CLI Tools
-brew 'tldr' # Simplified man pages
-brew 'exa'  # Improved ls
-brew 'bat'  # Improved cat
+brew 'tldr'          # Simplified man pages
+brew 'exa'           # Improved ls
+brew 'bat'           # Improved cat
+brew 'diff-so-fancy' # Prettier diff
