@@ -36,3 +36,6 @@ defaults write com.apple.finder QLEnableTextSelection -bool true
 # Configure fancy git diffing
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 git config --global interactive.diffFilter "diff-so-fancy --patch"
+
+# CUSTOM FUNCTIONS
+dif () { diff -u $1 $2 | diff-so-fancy; }
