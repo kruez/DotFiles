@@ -21,6 +21,9 @@ source $MY_DOT_ROOT/common.sh
 # Alias exa to a simple command
 alias l='exa --icons --git -lFg'
 
+# Prefer bat over built-in cat
+alias cat='bat'
+
 # Easily open text files in the console app
 alias console='open -a "Console"'
 

@@ -66,16 +66,6 @@ if [ ! -d "$POWERLEVEL_THEME_DIR" ]; then
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $POWERLEVEL_THEME_DIR
 fi
 
-if [ -x "$(command -v npm)" ]; then
-  echo "NPM Exists! Installing npm stuff 🐶"
-
-  echo "Installing AWS profile switcher"
-  npm install -g awsp
-else
-  # TODO auto install NPM earlier
-  echo "No NPM detected. Skipping... 😢"
-fi
-
 # Install powerline fonts
 if [ $INSTALL_SYSTEM = 'Darwin' ]; then
     FONT_DIR="$HOME/Library/Fonts"
@@ -109,24 +99,34 @@ if [ $INSTALL_SYSTEM = "Darwin" ]; then
   brew update
   brew upgrade
 
+  BREW_FILE="$DOT_ROOT/Brewfile.common"
+
+  if brew bundle check --file $BREW_FILE; then
+    echo "Brew bundle for common items up-to-date"
+  else
+    echo "Launching Brew bundler for common items 🤖"
+    brew bundle --file $BREW_FILE
+  fi
+
   # Do stuff specifically if running on home machine
   if [ $INSTALL_MODE = 'home' ]; then
-    echo "Symlinking Brewfile into position 🍺"
-    ln -sfv "$DOT_ROOT/Brewfile.common" $HOME_ROOT/Brewfile
-
     echo "Symlinking in .zshrc file 👑"
     ln -sfv "$DOT_ROOT/shell-imports/mac-zshrc" $HOME_ROOT/.zshrc
-
-    if brew bundle check; then
-        echo "Brew Bundle already fully installed"
-    else
-        echo "Launching Brew bundle installer 🤖"
-        brew bundle
-    fi
   fi
 
   echo "🚀 REMBEMR TO: To complete powerlevel10k setup visit: https://github.com/romkatv/powerlevel10k 🐸"
 fi
+
+if [ -x "$(command -v npm)" ]; then
+  echo "NPM Exists! Installing npm stuff 🐶"
+
+  echo "Installing AWS profile switcher"
+  npm install -g awsp
+else
+  # TODO auto install NPM earlier
+  echo "No NPM detected. Skipping... 😢"
+fi
+
 
 echo "🚨 REMEMBER TO: Symlink the custom Firefox chrome into your %FIREFOX_PROFILE%/chrome/ directory 🦊"
 

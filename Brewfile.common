@@ -5,6 +5,7 @@ tap 'aws/tap'
 brew 'git'         # Version control
 cask 'iterm2'      # Best terminal for OSX
 brew 'aws-sam-cli' # Testing lambda functions locally
+brew 'node'        # For all your JavaScript application needs
 
 # Customization apps
 cask 'karabiner-elements' # Keybinding manager
@@ -23,4 +24,4 @@ cask 'slack'         # Chat
 # Other Cool CLI Tools
 brew 'tldr' # Simplified man pages
 brew 'exa'  # Improved ls
-
+brew 'bat'  # Improved cat
