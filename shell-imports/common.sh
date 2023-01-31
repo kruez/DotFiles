@@ -1,16 +1,6 @@
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
 
-# Overwrite right side prompt with vi mode
-#function zle-line-init zle-keymap-select {
-#    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-#    RPS2=$RPS1
-#    zle reset-prompt
-#}
-# Bind vi-mode prompt update to zsh events
-# zle -N zle-line-init
-# zle -N zle-keymap-select
-
 # Aliases
 
 # List open ports
@@ -28,6 +18,7 @@ alias duc='du -h --max-depth=1 | sort -h'
 
 # Git aliases
 alias st='git st'
+alias gpr='git pull --rebase'
 alias sshow='git sshow'
 alias sapply='git sapply'
 

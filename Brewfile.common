@@ -2,24 +2,25 @@ tap 'microsoft/git'
 tap 'aws/tap'
 
 # Core CLI/dev stuff
-brew 'git'
-cask 'iterm2'
-brew 'aws-sam-cli'
+brew 'git'         # Version control
+cask 'iterm2'      # Best terminal for OSX
+brew 'aws-sam-cli' # Testing lambda functions locally
 
 # Customization apps
-cask 'karabiner-elements'
-cask 'moom'
+cask 'karabiner-elements' # Keybinding manager
+cask 'moom'               # Window management
 
 # Common UI based apps
-cask 'alfred'
-cask 'spotify'
-cask 'intellij-idea'
-cask 'slack'
+cask 'alfred'        # Productivity shortcut suite
+cask 'spotify'       # Music
+cask 'intellij-idea' # IDE
+cask 'slack'         # Chat
 
 # Transmit install v5 by default, but only have a v4 license
 # https://download.panic.com/transmit/Transmit-4-Latest.zip
 # cask 'transmit'
 
 # Other Cool CLI Tools
-brew 'tldr'
+brew 'tldr' # Simplified man pages
+brew 'exa'  # Improved ls
 

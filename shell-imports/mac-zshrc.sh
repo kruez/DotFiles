@@ -18,6 +18,9 @@ MY_DOT_ROOT=$(dirname "$CUR_FILE")
 
 source $MY_DOT_ROOT/common.sh
 
+# Alias exa to a simple command
+alias l='exa --icons --git -lFg'
+
 # Easily open text files in the console app
 alias console='open -a "Console"'
 

@@ -14,3 +14,8 @@ fi
 MY_DOT_ROOT=$(dirname "$CUR_FILE")
 
 source $MY_DOT_ROOT/common.sh
+
+# Aliases
+
+# Enhanced ls shortcut
+alias l='ls -halF'
