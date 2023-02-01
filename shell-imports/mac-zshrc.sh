@@ -18,9 +18,6 @@ MY_DOT_ROOT=$(dirname "$CUR_FILE")
 
 source $MY_DOT_ROOT/common.sh
 
-# Alias exa to a simple command
-alias l='exa --icons --git -lFg'
-
 # Prefer bat over built-in cat
 alias cat='bat'
 
@@ -32,10 +29,6 @@ function mvim { /Applications/MacVim.app/Contents/MacOS/Vim -g $*; }
 
 # Select and copy text from Apple Preview
 defaults write com.apple.finder QLEnableTextSelection -bool true
-
-# Configure fancy git diffing
-git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
-git config --global interactive.diffFilter "diff-so-fancy --patch"
 
 # CUSTOM FUNCTIONS
 dif () { diff -u $1 $2 | diff-so-fancy; }

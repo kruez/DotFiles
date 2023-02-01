@@ -85,28 +85,34 @@ else
     echo "Powerline fonts installed 💪"
 fi
 
+which brew
+if [[ $? != 0 ]]; then
+  echo "Installing Homebrew my dudes 🍻"
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+if [ $INSTALL_SYSTEM = "Linux" ]; then
+  echo "Installing recommended Homebrew dependencies"
+  sudo yum groupinstall 'Development Tools'
+fi
+
+echo "Updating brew in case it hasn't been done recently..."
+brew update
+brew upgrade
+
+BREW_FILE="$DOT_ROOT/Brewfile.common"
+
+if brew bundle check --file $BREW_FILE; then
+  echo "Brew bundle for common items up-to-date"
+else
+  echo "Launching Brew bundler for common items 🤖"
+  brew bundle --file $BREW_FILE
+fi
+
+echo "Running personal install for: $INSALL_SYSTEM 🐳"
+
 # Perform Mac specific setup
 if [ $INSTALL_SYSTEM = "Darwin" ]; then
-  
-  # Install Homebrew if not present
-  which -s brew
-  if [[ $? != 0 ]]; then
-    # Install brew
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  fi
-
-  echo "Updating brew in case it hasn't been done recently..."
-  brew update
-  brew upgrade
-
-  BREW_FILE="$DOT_ROOT/Brewfile.common"
-
-  if brew bundle check --file $BREW_FILE; then
-    echo "Brew bundle for common items up-to-date"
-  else
-    echo "Launching Brew bundler for common items 🤖"
-    brew bundle --file $BREW_FILE
-  fi
 
   # Do stuff specifically if running on home machine
   if [ $INSTALL_MODE = 'home' ]; then
@@ -114,9 +120,10 @@ if [ $INSTALL_SYSTEM = "Darwin" ]; then
     ln -sfv "$DOT_ROOT/shell-imports/mac-zshrc" $HOME_ROOT/.zshrc
   fi
 
-  echo "🚀 REMBEMR TO: To complete powerlevel10k setup visit: https://github.com/romkatv/powerlevel10k 🐸"
+  echo "🚀 REMEMBER TO: To complete powerlevel10k setup visit: https://github.com/romkatv/powerlevel10k 🐸"
 fi
 
+# Install any NPM helpers we want
 if [ -x "$(command -v npm)" ]; then
   echo "NPM Exists! Installing npm stuff 🐶"
 
@@ -126,7 +133,6 @@ else
   # TODO auto install NPM earlier
   echo "No NPM detected. Skipping... 😢"
 fi
-
 
 echo "🚨 REMEMBER TO: Symlink the custom Firefox chrome into your %FIREFOX_PROFILE%/chrome/ directory 🦊"
 

@@ -10,12 +10,10 @@ then
   CUR_FILE=$(readlink $CUR_FILE)
 fi
 
+# Make sure brew installed binaries found before system provided one
+export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+
 # Get current file, follow the symlink, and get the root dir
 MY_DOT_ROOT=$(dirname "$CUR_FILE")
 
 source $MY_DOT_ROOT/common.sh
-
-# Aliases
-
-# Enhanced ls shortcut
-alias l='ls -halF'
