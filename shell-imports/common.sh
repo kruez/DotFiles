@@ -118,6 +118,8 @@ dif () { diff -u $1 $2 | diff-so-fancy; }
 # NOTE: This needs to be included at the end of the file due to other includes 
 # potentially overwriting the auto-completion shortcuts.
 
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+
 # Setup fzf key bindings and auto completions
 export PATH="${PATH:+${PATH}:}$HOMEBREW_ROOT/opt/fzf/bin"
 
