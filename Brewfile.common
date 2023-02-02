@@ -35,3 +35,4 @@ brew 'ag'                     # The Silver Searcher, faster grep
 brew 'jq'                     # JSON processor
 brew 'procs'                  # Improved ps
 brew 'bpytop'                 # Improved htop
+brew 'gping'                  # Improved ping
