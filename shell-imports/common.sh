@@ -50,10 +50,30 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Aliases
+#######
+# FZF #
+#######
+
+
+# Setup fzf key bindings and auto completions
+export PATH="${PATH:+${PATH}:}$HOMEBREW_ROOT/opt/fzf/bin"
+
+# TODO this is being killed later on somehow need to debug
+# Auto-completion
+source "$HOMEBREW_ROOT/opt/fzf/shell/completion.zsh" 2> /dev/null
+
+# Key bindings
+source "$HOMEBREW_ROOT/opt/fzf/shell/key-bindings.zsh"
+
+###########
+# ALIASES #
+###########
 
 # Alias exa to a simple ls command
 alias l='exa --icons --git -lFg'
+
+# Prefer bat over built-in cat
+alias cat='bat'
 
 # List open ports
 alias ports='sudo lsof -i'
@@ -98,4 +118,10 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 export KEYTIMEOUT=1
+
+####################
+# CUSTOM FUNCTIONS #
+####################
+
+dif () { diff -u $1 $2 | diff-so-fancy; }
 

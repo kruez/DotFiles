@@ -10,8 +10,10 @@ then
   CUR_FILE=$(readlink $CUR_FILE)
 fi
 
+export HOMEBREW_ROOT="/home/linuxbrew/.linuxbrew"
+
 # Make sure brew installed binaries found before system provided one
-export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+export PATH="$HOMEBREW_ROOT/bin:$HOMEBREW_ROOT/sbin:$PATH"
 
 # Get current file, follow the symlink, and get the root dir
 MY_DOT_ROOT=$(dirname "$CUR_FILE")

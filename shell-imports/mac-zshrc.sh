@@ -10,16 +10,15 @@ then
   CUR_FILE=$(readlink $CUR_FILE)
 fi
 
+export HOMEBREW_ROOT="/opt/homebrew"
+
 # Make sure brew installed binaries found before system provided ones
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOMEBREW_ROOT/bin:$PATH"
 
 # Get current file, follow the symlink, and get the root dir
 MY_DOT_ROOT=$(dirname "$CUR_FILE")
 
 source $MY_DOT_ROOT/common.sh
-
-# Prefer bat over built-in cat
-alias cat='bat'
 
 # Easily open text files in the console app
 alias console='open -a "Console"'
@@ -30,5 +29,3 @@ function mvim { /Applications/MacVim.app/Contents/MacOS/Vim -g $*; }
 # Select and copy text from Apple Preview
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
-# CUSTOM FUNCTIONS
-dif () { diff -u $1 $2 | diff-so-fancy; }
