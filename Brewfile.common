@@ -36,3 +36,5 @@ brew 'jq'                     # JSON processor
 brew 'procs'                  # Improved ps
 brew 'bpytop'                 # Improved htop
 brew 'gping'                  # Improved ping
+brew 'dua-cli'                # Improved du
+brew 'duf'                    # Improved df
