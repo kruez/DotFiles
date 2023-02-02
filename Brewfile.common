@@ -34,3 +34,4 @@ brew 'fzf'                    # Fuzzy finder, can leverage fd to work faster
 brew 'ag'                     # The Silver Searcher, faster grep
 brew 'jq'                     # JSON processor
 brew 'procs'                  # Improved ps
+brew 'bpytop'                 # Improved htop
