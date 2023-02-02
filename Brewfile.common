@@ -40,3 +40,4 @@ brew 'gping'                  # Improved ping
 brew 'dua-cli'                # Improved du
 brew 'duf'                    # Improved df
 brew 'ranger'                 # File browser with VI key bindings
+brew 'pv'                     # Track pipe progress
