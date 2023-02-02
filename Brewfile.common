@@ -1,31 +1,32 @@
 tap 'microsoft/git'
 tap 'aws/tap'
+tap 'buo/cask-upgrade'    # Allows for easy updating of cask apps via `brew cu`
 
 # Core CLI/dev stuff
-brew 'git'         # Version control
-cask 'iterm2'      # Best terminal for OSX
-brew 'aws-sam-cli' # Testing lambda functions locally
-brew 'node'        # For all your JavaScript application needs
+brew 'git'                # Version control
+cask 'iterm2'             # Best terminal for OSX
+brew 'aws-sam-cli'        # Testing lambda functions locally
+brew 'node'               # For all your JavaScript application needs
 
 # Customization apps
 cask 'karabiner-elements' # Keybinding manager
 cask 'moom'               # Window management
 
 # Common UI based apps
-cask 'alfred'        # Productivity shortcut suite
-cask 'spotify'       # Music
-cask 'intellij-idea' # IDE
-cask 'slack'         # Chat
-cask 'obsidian'      # Personal knowledge base
+cask 'alfred'             # Productivity shortcut suite
+cask 'spotify'            # Music
+cask 'intellij-idea'      # IDE
+cask 'slack'              # Chat
+cask 'obsidian'           # Personal knowledge base
 
 # Transmit install v5 by default, but only have a v4 license
 # https://download.panic.com/transmit/Transmit-4-Latest.zip
 # cask 'transmit'
 
 # Other Cool CLI Tools
-brew 'tldr'          # Simplified man pages
-brew 'exa'           # Improved ls
-brew 'bat'           # Improved cat
-brew 'diff-so-fancy' # Prettier diff
-brew 'fd'            # Faster find
-brew 'fzf'           # Fuzzy finder, can leverage fd to work faster
+brew 'tldr'               # Simplified man pages
+brew 'exa'                # Improved ls
+brew 'bat'                # Improved cat
+brew 'diff-so-fancy'      # Prettier diff
+brew 'fd'                 # Faster find
+brew 'fzf'                # Fuzzy finder, can leverage fd to work faster
