@@ -19,6 +19,7 @@ cask 'spotify'                # Music
 cask 'intellij-idea'          # IDE
 cask 'slack'                  # Chat
 cask 'obsidian'               # Personal knowledge base
+cask 'lastpass'               # Password manager
 
 # Transmit install v5 by default, but only have a v4 license
 # https://download.panic.com/transmit/Transmit-4-Latest.zip
