@@ -30,3 +30,5 @@ brew 'bat'                # Improved cat
 brew 'diff-so-fancy'      # Prettier diff
 brew 'fd'                 # Faster find
 brew 'fzf'                # Fuzzy finder, can leverage fd to work faster
+brew 'ag'                 # The Silver Searcher, faster grep
+brew 'jq'                 # JSON processor
