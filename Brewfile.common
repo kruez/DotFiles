@@ -20,7 +20,7 @@ cask 'intellij-idea'          # IDE
 cask 'slack'                  # Chat
 cask 'obsidian'               # Personal knowledge base
 cask 'lastpass'               # Password manager
-cask 'istat-menus'            # Resource status visualizer for the menu
+#cask 'istat-menus'            # Resource status visualizer for the menu
 
 # Transmit install v5 by default, but only have a v4 license
 # https://download.panic.com/transmit/Transmit-4-Latest.zip
@@ -42,3 +42,4 @@ brew 'dua-cli'                # Improved du
 brew 'duf'                    # Improved df
 brew 'ranger'                 # File browser with VI key bindings
 brew 'pv'                     # Track pipe progress
+brew 'rm-improved'            # Improved rm
