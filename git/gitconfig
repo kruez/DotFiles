@@ -3,7 +3,7 @@
 [core]
     pager = diff-so-fancy | less --tabs=4 -FMRiX
     excludesfile = ~/.gitignore_global
-    editor = vim
+    editor = nvim
 [push]
     default = simple
 [rerere]

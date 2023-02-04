@@ -1,7 +1,7 @@
 export TJL_COMMON_IMPORTED=1
 
 # Preferred editor for local and remote sessions
-export EDITOR='vim'
+export EDITOR=nvim
 
 # Oh-my-zsh Theme Settings
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -60,6 +60,9 @@ alias l='exa --icons --git -laFg'
 
 # Simple file explorer. The leading . causes ranger to exit to the current selected dir
 alias r='. ranger'
+
+# Prefer neovim if available
+alias v='nvim'
 
 # Prefer bat over built-in cat
 alias cat='bat'
