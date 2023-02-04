@@ -56,7 +56,7 @@ source $ZSH/oh-my-zsh.sh
 ###########
 
 # Alias exa to a simple ls command
-alias l='exa --icons --git -lFg'
+alias l='exa --icons --git -laFg'
 
 # Simple file explorer. The leading . causes ranger to exit to the current selected dir
 alias r='. ranger'

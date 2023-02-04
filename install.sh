@@ -22,11 +22,16 @@ DOT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 HOME_ROOT=$HOME
 
+MY_CONFIG_ROOT=$DOT_ROOT/configs
+
 echo "Using following as home root: $HOME_ROOT"
 
 # Create some default directories that will be needed
 VIM_HOME=$HOME_ROOT/.vim
 mkdir -p $VIM_HOME
+
+RANGER_CONFIG_ROOT=$HOME_ROOT/.config/ranger
+mkdir -p $RANGER_CONFIG_ROOT
 
 # Symlink in certain config files
 ln -sfv "$DOT_ROOT/editors/vimrc" $HOME_ROOT/.vimrc
@@ -34,6 +39,7 @@ ln -sfv "$DOT_ROOT/git/gitignore_global" $HOME_ROOT/.gitignore_global
 ln -sfv "$DOT_ROOT/git/gitconfig" $HOME_ROOT/.gitconfig
 ln -sfv "$DOT_ROOT/shell-imports/powerlevel10k-settings.sh" $HOME_ROOT/.p10k.zsh
 ln -sfv "$DOT_ROOT/shell-imports/tmux.sh" $HOME_ROOT/.tmux.conf
+ln -sfv "$MY_CONFIG_ROOT/ranger/rc.conf" $RANGER_CONFIG_ROOT/rc.conf
 
 # Install Vim Plugin Manager
 PLUG_VIM=$VIM_HOME/autoload/plug.vim
