@@ -16,13 +16,13 @@ cask 'moom'                   # Window management
 # Common UI based apps
 cask 'alfred'                 # Productivity shortcut suite
 cask 'spotify'                # Music
-cask 'intellij-idea'          # IDE
 cask 'slack'                  # Chat
 cask 'obsidian'               # Personal knowledge base
 cask 'lastpass'               # Password manager
 #cask 'istat-menus'            # Resource status visualizer for the menu
 
 # Dev specific UI based apps
+cask 'intellij-idea'          # IDE
 cask 'dash'                   # API documentation browser and code snippet manager, license in gmail
 
 # Transmit install v5 by default, but only have a v4 license
@@ -46,3 +46,4 @@ brew 'duf'                    # Improved df
 brew 'ranger'                 # File browser with VI key bindings
 brew 'pv'                     # Track pipe progress
 brew 'rm-improved'            # Improved rm
+brew 'lolcat'                 # Rainbows in the console
