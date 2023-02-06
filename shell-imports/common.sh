@@ -4,7 +4,10 @@ export TJL_COMMON_IMPORTED=1
 export EDITOR=nvim
 
 # Oh-my-zsh Theme Settings
-ZSH_THEME="powerlevel10k/powerlevel10k"
+#ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="alien/alien"
+export ALIEN_THEME="gruvbox"
+export ALIEN_USE_NERD_FONT=1
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -48,8 +51,9 @@ export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+ALIEN_ZSH=~/.oh-my-zsh/custom/themes/alien/alien.zsh
+[[ ! -f $ALIEN_ZSH ]] || source $ALIEN_ZSH
 
 ###########
 # ALIASES #

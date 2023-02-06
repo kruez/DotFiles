@@ -39,7 +39,7 @@ mkdir -p $RANGER_CONFIG_COLORS_ROOT
 ln -sfv "$DOT_ROOT/editors/vimrc" $HOME_ROOT/.vimrc
 ln -sfv "$DOT_ROOT/git/gitignore_global" $HOME_ROOT/.gitignore_global
 ln -sfv "$DOT_ROOT/git/gitconfig" $HOME_ROOT/.gitconfig
-ln -sfv "$DOT_ROOT/shell-imports/powerlevel10k-settings.sh" $HOME_ROOT/.p10k.zsh
+#ln -sfv "$DOT_ROOT/shell-imports/powerlevel10k-settings.sh" $HOME_ROOT/.p10k.zsh
 ln -sfv "$DOT_ROOT/shell-imports/tmux.sh" $HOME_ROOT/.tmux.conf
 ln -sfv "$DOT_ROOT/configs/nvim" $HOME_ROOT/.config/nvim
 
@@ -66,12 +66,20 @@ if [ ! -d "$TPM_INSTALL_DIR" ]; then
 fi
 
 # Install zsh theme
-POWERLEVEL_THEME_DIR=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-if [ ! -d "$POWERLEVEL_THEME_DIR" ]; then
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $POWERLEVEL_THEME_DIR
+#POWERLEVEL_THEME_DIR=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+#if [ ! -d "$POWERLEVEL_THEME_DIR" ]; then
+#  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $POWERLEVEL_THEME_DIR
+#fi
+
+# Install zsh alien theme. Good for gruvbox
+ALIEN_THEME_DIR=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/alien
+if [ ! -d "$ALIEN_THEME_DIR" ]; then
+  git clone --depth=1 https://github.com/eendroroy/alien.git $ALIEN_THEME_DIR
+  git -C $ALIEN_THEME_DIR submodule update --init --recursive
 fi
 
 # Install powerline fonts
+# TODO are these fonts only needed for powerline?
 if [ $INSTALL_SYSTEM = 'Darwin' ]; then
     FONT_DIR="$HOME/Library/Fonts"
 else
@@ -125,7 +133,7 @@ if [ $INSTALL_SYSTEM = "Darwin" ]; then
     ln -sfv "$DOT_ROOT/shell-imports/mac-zshrc" $HOME_ROOT/.zshrc
   fi
 
-  echo "🚀 REMEMBER TO: To complete powerlevel10k setup visit: https://github.com/romkatv/powerlevel10k 🐸"
+#  echo "🚀 REMEMBER TO: To complete powerlevel10k setup visit: https://github.com/romkatv/powerlevel10k 🐸"
 fi
 
 # Install any NPM helpers we want
