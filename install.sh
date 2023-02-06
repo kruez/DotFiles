@@ -31,7 +31,9 @@ VIM_HOME=$HOME_ROOT/.vim
 mkdir -p $VIM_HOME
 
 RANGER_CONFIG_ROOT=$HOME_ROOT/.config/ranger
+RANGER_CONFIG_COLORS_ROOT=$RANGER_CONFIG_ROOT/colorschemes
 mkdir -p $RANGER_CONFIG_ROOT
+mkdir -p $RANGER_CONFIG_COLORS_ROOT
 
 # Symlink in certain config files
 ln -sfv "$DOT_ROOT/editors/vimrc" $HOME_ROOT/.vimrc
@@ -39,7 +41,10 @@ ln -sfv "$DOT_ROOT/git/gitignore_global" $HOME_ROOT/.gitignore_global
 ln -sfv "$DOT_ROOT/git/gitconfig" $HOME_ROOT/.gitconfig
 ln -sfv "$DOT_ROOT/shell-imports/powerlevel10k-settings.sh" $HOME_ROOT/.p10k.zsh
 ln -sfv "$DOT_ROOT/shell-imports/tmux.sh" $HOME_ROOT/.tmux.conf
+
+# Ranger configs
 ln -sfv "$MY_CONFIG_ROOT/ranger/rc.conf" $RANGER_CONFIG_ROOT/rc.conf
+ln -sfv "$MY_CONFIG_ROOT/ranger/colorschemes/gruvbox.py" $RANGER_CONFIG_COLORS_ROOT/gruvbox.py
 
 # Install Vim Plugin Manager
 PLUG_VIM=$VIM_HOME/autoload/plug.vim
