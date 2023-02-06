@@ -45,6 +45,11 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
+" Beautify this ugly best
+" https://github.com/morhetz/gruvbox/
+Plug 'morhetz/gruvbox'
+autocmd vimenter * ++nested colorscheme gruvbox
+
 Plug 'tpope/vim-sensible'
 
 " On-demand loading
