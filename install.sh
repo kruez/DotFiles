@@ -41,17 +41,11 @@ ln -sfv "$DOT_ROOT/git/gitignore_global" $HOME_ROOT/.gitignore_global
 ln -sfv "$DOT_ROOT/git/gitconfig" $HOME_ROOT/.gitconfig
 ln -sfv "$DOT_ROOT/shell-imports/powerlevel10k-settings.sh" $HOME_ROOT/.p10k.zsh
 ln -sfv "$DOT_ROOT/shell-imports/tmux.sh" $HOME_ROOT/.tmux.conf
+ln -sfv "$DOT_ROOT/configs/nvim" $HOME_ROOT/.config/nvim
 
 # Ranger configs
 ln -sfv "$MY_CONFIG_ROOT/ranger/rc.conf" $RANGER_CONFIG_ROOT/rc.conf
 ln -sfv "$MY_CONFIG_ROOT/ranger/colorschemes/gruvbox.py" $RANGER_CONFIG_COLORS_ROOT/gruvbox.py
-
-# Install Vim Plugin Manager
-PLUG_VIM=$VIM_HOME/autoload/plug.vim
-if [ ! -e "$PLUG_VIM" ]; then
-  curl -fLo $PLUG_VIM --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
 
 # Install oh-my-zsh if not present already
 if [ ! -d "$HOME_ROOT/.oh-my-zsh" ]; then
