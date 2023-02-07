@@ -39,7 +39,7 @@ mkdir -p $RANGER_CONFIG_COLORS_ROOT
 ln -sfv "$DOT_ROOT/editors/vimrc" $HOME_ROOT/.vimrc
 ln -sfv "$DOT_ROOT/git/gitignore_global" $HOME_ROOT/.gitignore_global
 ln -sfv "$DOT_ROOT/git/gitconfig" $HOME_ROOT/.gitconfig
-#ln -sfv "$DOT_ROOT/shell-imports/powerlevel10k-settings.sh" $HOME_ROOT/.p10k.zsh
+#ln -sfv "$DOT_ROOT/shell-imports/zsh-themes/powerlevel10k-settings.sh" $HOME_ROOT/.p10k.zsh
 ln -sfv "$DOT_ROOT/shell-imports/tmux.sh" $HOME_ROOT/.tmux.conf
 ln -sfv "$DOT_ROOT/configs/nvim" $HOME_ROOT/.config/nvim
 
@@ -80,23 +80,23 @@ fi
 
 # Install powerline fonts
 # TODO are these fonts only needed for powerline?
-if [ $INSTALL_SYSTEM = 'Darwin' ]; then
-    FONT_DIR="$HOME/Library/Fonts"
-else
-    FONT_DIR="$HOME/.local/share/fonts"
-fi
+#if [ $INSTALL_SYSTEM = 'Darwin' ]; then
+#    FONT_DIR="$HOME/Library/Fonts"
+#else
+#    FONT_DIR="$HOME/.local/share/fonts"
+#fi
 
 # Check to see if fonts already exist
-FONT_FILES="$FONT_DIR/*"
-if grep -q "Powerline" $FONT_FILES; then
-    echo "Powerline fonts already installed 💪"
-else
-    echo "Installing Powerline fonts 🔋"
-    git clone https://github.com/powerline/fonts.git /tmp/fonts
-    /tmp/fonts/install.sh
-    rm -rf /tmp/fonts
-    echo "Powerline fonts installed 💪"
-fi
+#FONT_FILES="$FONT_DIR/*"
+#if grep -q "Powerline" $FONT_FILES; then
+#    echo "Powerline fonts already installed 💪"
+#else
+#    echo "Installing Powerline fonts 🔋"
+#    git clone https://github.com/powerline/fonts.git /tmp/fonts
+#    /tmp/fonts/install.sh
+#    rm -rf /tmp/fonts
+#    echo "Powerline fonts installed 💪"
+#fi
 
 which brew
 if [[ $? != 0 ]]; then

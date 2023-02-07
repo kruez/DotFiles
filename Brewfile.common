@@ -1,6 +1,7 @@
 tap 'microsoft/git'           # Primarily needed for the git-credential-manager-core
 tap 'aws/tap'                 # For aws-sam-cli
 tap 'buo/cask-upgrade'        # Allows for easy updating of cask apps via `brew cu`
+tap 'homebrew/cask-fonts'     # Nerd fonts tap
 
 # Core Dev stuff
 brew 'git'                    # Version control
@@ -31,6 +32,7 @@ cask 'dash'                   # API documentation browser and code snippet manag
 # cask 'transmit'
 
 # Other Cool CLI Tools
+cask 'font-hack-nerd-font'    # Nerd fonts
 brew 'tldr'                   # Simplified man pages
 brew 'exa'                    # Improved ls
 brew 'bat'                    # Improved cat

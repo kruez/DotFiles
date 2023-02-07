@@ -16,7 +16,7 @@ export HOMEBREW_ROOT="/opt/homebrew"
 export PATH="$HOMEBREW_ROOT/bin:$PATH"
 
 # Get current file, follow the symlink, and get the root dir
-MY_DOT_ROOT=$(dirname "$CUR_FILE")
+export MY_DOT_ROOT=$(dirname "$CUR_FILE")
 
 source $MY_DOT_ROOT/common.sh
 
