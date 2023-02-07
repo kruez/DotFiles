@@ -1,1 +1,1 @@
-source $CUSTOM_ZSH_THEMES/alien.sh
+source $CUSTOM_ZSH_THEMES/powerlevel10k.sh
