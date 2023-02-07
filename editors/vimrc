@@ -26,6 +26,8 @@ endfu
 " Enable Word Processor Mode with :WP
 com! WP call WordProcessorMode()
 
+" Set this since term supports truecolor
+set termguicolors
 
 " PLUG-INS
 
@@ -46,9 +48,13 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 " Beautify this ugly best
-" https://github.com/morhetz/gruvbox/
-Plug 'morhetz/gruvbox'
-autocmd vimenter * ++nested colorscheme gruvbox
+" https://github.com/ErichDonGubler/vim-sublime-monokai
+Plug 'ErichDonGubler/vim-sublime-monokai'
+let java_comment_strings=1
+let java_highlight_functions=1
+let java_highlight_java_lang_ids=1
+syntax on
+autocmd vimenter * ++nested colorscheme sublimemonokai
 
 Plug 'tpope/vim-sensible'
 
