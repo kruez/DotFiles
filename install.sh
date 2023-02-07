@@ -41,7 +41,7 @@ ln -sfv "$DOT_ROOT/git/gitignore_global" $HOME_ROOT/.gitignore_global
 ln -sfv "$DOT_ROOT/git/gitconfig" $HOME_ROOT/.gitconfig
 #ln -sfv "$DOT_ROOT/shell-imports/zsh-themes/powerlevel10k-settings.sh" $HOME_ROOT/.p10k.zsh
 ln -sfv "$DOT_ROOT/shell-imports/tmux.sh" $HOME_ROOT/.tmux.conf
-ln -sfv "$DOT_ROOT/configs/nvim" $HOME_ROOT/.config/nvim
+ln -sfv "$DOT_ROOT/configs/nvim" $HOME_ROOT/.config
 
 # Ranger configs
 ln -sfv "$MY_CONFIG_ROOT/ranger/rc.conf" $RANGER_CONFIG_ROOT/rc.conf
