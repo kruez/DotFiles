@@ -16,11 +16,11 @@ export ALIEN_SECTIONS_LEFT=(
   prompt
 )
 
-#export ALIEN_SECTIONS_RIGHT=(
-#  time
-#)
-#
-#export ALIENT_VERSIONS_PROMPT='PYTHON_S NODE_S JAVA_S'
+export ALIEN_SECTIONS_RIGHT=(
+  time
+)
+
+export ALIENT_VERSIONS_PROMPT='PYTHON_S NODE_S JAVA_S'
 
 ALIEN_ZSH=~/.oh-my-zsh/custom/themes/alien/alien.zsh
 [[ ! -f $ALIEN_ZSH ]] || source $ALIEN_ZSH
