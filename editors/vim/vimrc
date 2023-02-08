@@ -51,7 +51,7 @@ let java_space_errors=1
 let java_highlight_debug=1
 let java_mark_braces_in_parens_as_errors=1
 syntax on
-colorscheme monokai-extended-kruez
+colorscheme kruez-monokai
 
 command SynID  echo synIDattr(synID(line("."), col("."), 1), "name")
 
