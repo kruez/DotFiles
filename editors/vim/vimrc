@@ -29,6 +29,17 @@ com! WP call WordProcessorMode()
 " Set this since term supports truecolor
 set termguicolors
 
+" Setup custom colorscheme
+let java_comment_strings=1
+let java_highlight_functions=1
+let java_highlight_java_lang_ids=1
+let java_space_errors=1
+let java_highlight_debug=1
+let java_mark_braces_in_parens_as_errors=1
+syntax on
+colorscheme kruez-monokai
+
+
 " PLUG-INS
 
 " Auto Install Plug-in Manager if not present
@@ -43,30 +54,13 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
-" Setup custom colorscheme
-let java_comment_strings=1
-let java_highlight_functions=1
-let java_highlight_java_lang_ids=1
-let java_space_errors=1
-let java_highlight_debug=1
-let java_mark_braces_in_parens_as_errors=1
-syntax on
-colorscheme kruez-monokai
-
-command SynID  echo synIDattr(synID(line("."), col("."), 1), "name")
 
 " Setup Plug-ins
 call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
-" Beautify this ugly best
-" https://github.com/ErichDonGubler/vim-sublime-monokai
-" Plug 'ErichDonGubler/vim-sublime-monokai'
-" let java_comment_strings=1
-" let java_highlight_functions=1
-" let java_highlight_java_lang_ids=1
-" syntax on
-" autocmd vimenter * ++nested colorscheme monokai-extended-kruez
+" Enable fzf in vim
+Plug 'junegunn/fzf'
 
 Plug 'tpope/vim-sensible'
 

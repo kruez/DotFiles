@@ -123,10 +123,36 @@ dif () { diff -u $1 $2 | diff-so-fancy; }
 # FZF #
 #######
 
+
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --no-ignore --exclude .git'
+
+# Helpful options stolen from https://betterprogramming.pub/boost-your-command-line-productivity-with-fuzzy-finder-985aa162ba5d#d515
+export FZF_DEFAULT_OPTS="
+--layout=reverse
+--info=inline
+--height=80%
+--multi
+--preview-window=:hidden
+--preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+--color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
+--prompt='∼ ' --pointer='▶' --marker='✓'
+--bind '?:toggle-preview'
+--bind 'ctrl-e:execute(nvim {} < /dev/tty > /dev/tty)'
+"
+
+# Simple searching with FZF via CTRL-T
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+# Deal with Mac so we can use FZF's ALT-C behavior
+bindkey "ç" fzf-cd-widget
+export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --hidden --follow --no-ignore --exclude .git'
+
+
 # NOTE: This needs to be included at the end of the file due to other includes 
 # potentially overwriting the auto-completion shortcuts.
-
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 
 # Setup fzf key bindings and auto completions
 export PATH="${PATH:+${PATH}:}$HOMEBREW_ROOT/opt/fzf/bin"
