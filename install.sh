@@ -29,6 +29,8 @@ echo "Using following as home root: $HOME_ROOT"
 # Create some default directories that will be needed
 VIM_HOME=$HOME_ROOT/.vim
 mkdir -p $VIM_HOME
+VIM_COLORS=$VIM_HOME/colors
+mkdir -p $VIM_COLORS
 
 RANGER_CONFIG_ROOT=$HOME_ROOT/.config/ranger
 RANGER_CONFIG_COLORS_ROOT=$RANGER_CONFIG_ROOT/colorschemes
@@ -36,7 +38,8 @@ mkdir -p $RANGER_CONFIG_ROOT
 mkdir -p $RANGER_CONFIG_COLORS_ROOT
 
 # Symlink in certain config files
-ln -sfv "$DOT_ROOT/editors/vimrc" $HOME_ROOT/.vimrc
+ln -sfv "$DOT_ROOT/editors/vim/vimrc" $HOME_ROOT/.vimrc
+ln -sfv "$DOT_ROOT/editors/vim/colors/monokai-extended-kruez.vim" $HOME_ROOT/.vim/colors/monokai-extended-kruez.vim
 ln -sfv "$DOT_ROOT/git/gitignore_global" $HOME_ROOT/.gitignore_global
 ln -sfv "$DOT_ROOT/git/gitconfig" $HOME_ROOT/.gitconfig
 ln -sfv "$DOT_ROOT/shell-imports/tmux.sh" $HOME_ROOT/.tmux.conf

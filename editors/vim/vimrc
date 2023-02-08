@@ -43,18 +43,27 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
+" Setup custom colorscheme
+let java_comment_strings=1
+let java_highlight_functions=1
+let java_highlight_java_lang_ids=1
+syntax on
+colorscheme monokai-extended-kruez
+
+command SynID  echo synIDattr(synID(line("."), col("."), 1), "name")
+
 " Setup Plug-ins
 call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 " Beautify this ugly best
 " https://github.com/ErichDonGubler/vim-sublime-monokai
-Plug 'ErichDonGubler/vim-sublime-monokai'
-let java_comment_strings=1
-let java_highlight_functions=1
-let java_highlight_java_lang_ids=1
-syntax on
-autocmd vimenter * ++nested colorscheme sublimemonokai
+" Plug 'ErichDonGubler/vim-sublime-monokai'
+" let java_comment_strings=1
+" let java_highlight_functions=1
+" let java_highlight_java_lang_ids=1
+" syntax on
+" autocmd vimenter * ++nested colorscheme monokai-extended-kruez
 
 Plug 'tpope/vim-sensible'
 
