@@ -79,7 +79,7 @@ endf
 
 call s:create_palette_color('brightwhite', { 'gui': '#FFFFFF', 'cterm': '231' })
 call s:create_palette_color('white',       { 'gui': '#E8E8E3', 'cterm': '252' })
-call s:create_palette_color('black',       { 'gui': '#000000', 'cterm': '0'   })
+call s:create_palette_color('black',       { 'gui': '#1A1919', 'cterm': '234' })
 call s:create_palette_color('lightblack',  { 'gui': '#2D2E27', 'cterm': '235' })
 call s:create_palette_color('lightblack2', { 'gui': '#383a3e', 'cterm': '236' })
 call s:create_palette_color('darkblack',   { 'gui': '#211F1C', 'cterm': '233' })
@@ -88,13 +88,13 @@ call s:create_palette_color('lightgrey',   { 'gui': '#575b61', 'cterm': '237' })
 call s:create_palette_color('darkgrey',    { 'gui': '#64645e', 'cterm': '239' })
 call s:create_palette_color('warmgrey',    { 'gui': '#75715E', 'cterm': '59'  })
 
-call s:create_palette_color('pink',        { 'gui': '#f92772', 'cterm': '197' })
-call s:create_palette_color('green',       { 'gui': '#a6e22d', 'cterm': '148' })
-call s:create_palette_color('aqua',        { 'gui': '#66d9ef', 'cterm': '81'  })
-call s:create_palette_color('yellow',      { 'gui': '#e6db74', 'cterm': '186' })
+call s:create_palette_color('pink',        { 'gui': '#F0444B', 'cterm': '203' })
+call s:create_palette_color('green',       { 'gui': '#A1D24D', 'cterm': '148' })
+call s:create_palette_color('aqua',        { 'gui': '#51CEFF', 'cterm': '81'  })
+call s:create_palette_color('yellow',      { 'gui': '#CED075', 'cterm': '186' })
 call s:create_palette_color('darkyellow',  { 'gui': '#878700', 'cterm': '100' })
-call s:create_palette_color('orange',      { 'gui': '#fd9720', 'cterm': '208' })
-call s:create_palette_color('purple',      { 'gui': '#ae81ff', 'cterm': '141' })
+call s:create_palette_color('orange',      { 'gui': '#F87109', 'cterm': '208' })
+call s:create_palette_color('purple',      { 'gui': '#9466ED', 'cterm': '99'  })
 call s:create_palette_color('red',         { 'gui': '#e73c50', 'cterm': '196' })
 call s:create_palette_color('darkred',     { 'gui': '#5f0000', 'cterm': '52'  })
 
@@ -695,6 +695,7 @@ hi! link htmlSpecialChar    Special
 hi! link htmlTagName        Keyword
 
 " Java
+" Java Syntax options: https://github.com/vim/vim/blob/master/runtime/syntax/java.vim
 
 "   Common groups
 hi! link javaAnnotation       SublimeAqua
