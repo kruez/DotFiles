@@ -91,11 +91,17 @@ echo "🚀 REMEMBER TO: To complete powerlevel10k setup visit: https://github.co
 
 
 # Handle Brew setup and update
-if [ -x "$(command -v brew)" ]; then
+BREW_BIN_DIR=/home/linuxbrew/.linuxbrew/bin
+if [ $SYS = $MAC ]; then
+  BREW_BIN_DIR=/opt/homebrew/bin
+fi
+BREW_CMD=$BREW_BIN_DIR/brew
+
+if [ -x "$(command -v $BREW_CMD)" ]; then
   echo "Updating brew in case it hasn't been done recently..."
-  brew update
-  brew upgrade
-elif
+  $BREW_CMD update
+  $BREW_CMD upgrade
+else
   echo "Installing Homebrew my dudes 🍻"
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
@@ -106,19 +112,20 @@ if [ $SYS = $LINUX ]; then
 fi
 
 BREW_FILE="$DOT_ROOT/Brewfile.common"
-if brew bundle check --file $BREW_FILE; then
+if $BREW_CMD bundle check --file $BREW_FILE; then
   echo "Brew bundle for common items up-to-date"
 else
   echo "Launching Brew bundler for common items 🤖"
-  brew bundle --file $BREW_FILE
+  $BREW_CMD bundle --file $BREW_FILE
 fi
 
 
 # NPM should be installed by brew
 echo "Installing npm stuff 🐶"
+NPM_CMD=$BREW_BIN_DIR/npm
 
 echo "Installing AWS profile switcher"
-npm install -g awsp
+$NPM_CMD install -g awsp
 
 echo "🚨 REMEMBER TO: Symlink the custom Firefox chrome into your %FIREFOX_PROFILE%/chrome/ directory 🦊"
 
