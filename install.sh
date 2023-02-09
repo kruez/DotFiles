@@ -27,12 +27,12 @@ DOT_ROOT_CONFIG=$DOT_ROOT/dotconfig
 
 # Symlink stuff core stuff into place
 echo "Symlinking all files in $DOT_ROOT_HOME into home directory ⛓"
-find $DOT_ROOT_HOME -maxdepth 1 | while read file; do ln -sfv "$file" "$HOME"; done
+find $DOT_ROOT_HOME -maxdepth 1 -mindepth 1 | while read file; do ln -sfv "$file" "$HOME"; done
 
 HOME_CONFIG=$HOME/.config
 mkdir -p $HOME_CONFIG
 echo "Symlinking all files in $DOT_ROOT_CONFIG into home .config directory ⛓"
-find $DOT_ROOT_HOME -maxdepth 1 | while read file; do ln -sfv "$file" "$HOME_CONFIG"; done
+find $DOT_ROOT_CONFIG -maxdepth 1 -mindepth 1 | while read file; do ln -sfv "$file" "$HOME_CONFIG"; done
 
 # Install Tmux plugins
 TPM_INSTALL_DIR=$HOME/.tmux/plugins/tpm
