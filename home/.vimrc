@@ -30,6 +30,7 @@ com! WP call WordProcessorMode()
 set termguicolors
 
 " Setup custom colorscheme
+set runtimepath+=~/.vimstyles
 let java_comment_strings=1
 let java_highlight_functions=1
 let java_highlight_java_lang_ids=1
