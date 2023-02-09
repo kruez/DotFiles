@@ -88,10 +88,6 @@ alias gpr='git pull --rebase'
 alias sshow='git sshow'
 alias sapply='git sapply'
 
-# Dynamically set some git config values
-git config --global user.name "Tim Lawson"
-git config --global user.email "timothy.lawson@gmail.com"
-
 # Print out Powerlevel10K colorcodes with example text
 alias colorcodes='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
 

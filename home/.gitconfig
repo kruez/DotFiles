@@ -36,10 +36,6 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
-[amazon]
-    append-cr-url = true
-    pull-request-by-default = true
-    autofetch-interval = 10 minutes ago
 [diff]
     tool = diffmerge
 [difftool]
@@ -51,13 +47,13 @@
 [mergetool "diffmerge"]
     cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
     trustExitCode = true
-
 [user]
-	name = 🦄 Tim Lawson
+	name = kruez
 	email = timothy.lawson@gmail.com
 [credential]
 	helper = !aws codecommit credential-helper $@
 	UseHttpPath = true
-
 [interactive]
     diffFilter = diff-so-fancy --patch
+[includeIf "hasconfig:remote.*.url:*://*.amazon.com*/**"]
+    path = ~/.gitconfig-amazon
