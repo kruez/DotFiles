@@ -33,7 +33,6 @@ cask 'dash'                   # API documentation browser and code snippet manag
 
 # Other Cool CLI Tools
 brew 'zplug'                  # zsh plug-in manager
-cask 'font-hack-nerd-font'    # Nerd fonts
 brew 'tldr'                   # Simplified man pages
 brew 'exa'                    # Improved ls
 brew 'bat'                    # Improved cat

@@ -49,6 +49,7 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 # Install CLI syntax highlighting
+# We install this the old fashioned way since the one installed from zplug seems way slower
 ZSH_SYNTAX_PLUGIN_DIR=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 if [ ! -d "$ZSH_SYNTAX_PLUGIN_DIR" ]; then
   echo "Installing oh-my-zsh syntax highlighting plugin"
@@ -56,7 +57,6 @@ if [ ! -d "$ZSH_SYNTAX_PLUGIN_DIR" ]; then
 fi
 
 # Install powerline fonts
-# TODO figure out if this font business is necessary
 if [ $SYS = $MAC ]; then
     FONT_DIR="$HOME/Library/Fonts"
 else
@@ -65,14 +65,29 @@ fi
 
 # Check to see if fonts already exist
 FONT_FILES="$FONT_DIR/*"
-if grep -q "Powerline" $FONT_FILES; then
-    echo "Powerline fonts already installed 💪"
+if grep -q "MesloLGS NF" $FONT_FILES; then
+    echo "MesloLGS Nerd Fonts already installed 💪"
 else
-    echo "Installing Powerline fonts 🔋"
-    git clone https://github.com/powerline/fonts.git /tmp/fonts
-    /tmp/fonts/install.sh
-    rm -rf /tmp/fonts
-    echo "Powerline fonts installed 💪"
+    echo "Installing MesloLGS Nerd Fonts 🔋"
+
+    # Stealing auto font install from Powerlevel wizard
+    # https://github.com/romkatv/powerlevel10k/blob/6609767abd81aed3101cb67908df727998b0b619/internal/wizard.zsh#L507
+    # Possible simplification: https://github.com/romkatv/powerlevel10k/issues/1071
+    font_base_url='https://github.com/romkatv/powerlevel10k-media/raw/master'
+    for style in Regular Bold Italic 'Bold Italic'; do
+        file="MesloLGS NF ${style}.ttf"
+        file_url="$font_base_url/${file// /%20}"
+        echo "Downloading $file_url"
+        curl -fsSL -o "$FONT_DIR/$file" "$file_url"
+    done
+
+    # Reset font cache on Linux
+    if which fc-cache >/dev/null 2>&1 ; then
+     echo "Resetting font cache, this may take a moment..."
+     fc-cache -f "$FONT_DIR"
+    fi
+
+    echo "MesloLGS Nerd Fonts installed 💪"
 fi
 
 if [ $INSTALL_MODE = 'home' ]; then
