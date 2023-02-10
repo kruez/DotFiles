@@ -12,7 +12,21 @@ source $CUSTOM_ZSH_THEMES/current.sh
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # REMEMBER: zsh-syntax-highlighting MUST be last
-plugins=(git zsh-syntax-highlighting)
+#plugins=(git zsh-syntax-highlighting)
+
+source $HOMEBREW_ROOT/opt/zplug/init.zsh
+
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install new plugins? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
 
 # Display red dots whilst waiting for completion
 COMPLETION_WAITING_DOTS="true"

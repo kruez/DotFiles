@@ -48,13 +48,6 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-# Install CLI syntax highlighting
-ZSH_SYNTAX_PLUGIN_DIR=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-if [ ! -d "$ZSH_SYNTAX_PLUGIN_DIR" ]; then
-  echo "Installing oh-my-zsh syntax highlighting plugin"
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_SYNTAX_PLUGIN_DIR
-fi
-
 # Install zsh theme
 POWERLEVEL_THEME_DIR=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 if [ ! -d "$POWERLEVEL_THEME_DIR" ]; then
