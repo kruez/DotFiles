@@ -25,6 +25,8 @@ DOT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DOT_ROOT_HOME=$DOT_ROOT/home
 DOT_ROOT_CONFIG=$DOT_ROOT/dotconfig
 
+source $DOT_ROOT/zsh/functions.sh
+
 # Symlink stuff core stuff into place
 echo "Symlinking all files in $DOT_ROOT_HOME into home directory ⛓"
 find $DOT_ROOT_HOME -maxdepth 1 -mindepth 1 | while read file; do ln -sfv "$file" "$HOME"; done
@@ -136,10 +138,8 @@ fi
 
 # NPM should be installed by brew
 echo "Installing npm stuff 🐶"
-NPM_CMD=$BREW_BIN_DIR/npm
+npm_global_install awsp # AWS profile switcher
 
-echo "Installing AWS profile switcher"
-$NPM_CMD install -g awsp
 
 echo "🚨 REMEMBER TO: Symlink the custom Firefox chrome into your %FIREFOX_PROFILE%/chrome/ directory 🦊"
 
