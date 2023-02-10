@@ -3,20 +3,19 @@ export TJL_COMMON_IMPORTED=1
 # Preferred editor for local and remote sessions
 export EDITOR=nvim
 
-# Oh-my-zsh Theme Settings
-export CUSTOM_ZSH_THEMES=$MY_DOT_ROOT/zsh-themes
-source $CUSTOM_ZSH_THEMES/current.sh
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # REMEMBER: zsh-syntax-highlighting MUST be last
-#plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting)
 
 source $HOMEBREW_ROOT/opt/zplug/init.zsh
 
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug romkatv/powerlevel10k, as:theme, depth:1
+
+# Syntax plugin was much slower when installed through zplug
+#zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -27,6 +26,11 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+
+# Oh-my-zsh Theme Settings
+export CUSTOM_ZSH_THEMES=$MY_DOT_ROOT/zsh-themes
+source $CUSTOM_ZSH_THEMES/current.sh
+
 
 # Display red dots whilst waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -61,11 +65,6 @@ COMPLETION_WAITING_DOTS="true"
 
 export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-#ALIEN_ZSH=~/.oh-my-zsh/custom/themes/alien/alien.zsh
-#[[ ! -f $ALIEN_ZSH ]] || source $ALIEN_ZSH
 
 ###########
 # ALIASES #
