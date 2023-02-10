@@ -1,52 +1,52 @@
-tap 'microsoft/git'           # Primarily needed for the git-credential-manager-core
-tap 'aws/tap'                 # For aws-sam-cli
-tap 'buo/cask-upgrade'        # Allows for easy updating of cask apps via `brew cu`
-tap 'homebrew/cask-fonts'     # Nerd fonts tap
+tap 'microsoft/git'                # Primarily needed for the git-credential-manager-core
+tap 'aws/tap'                      # For aws-sam-cli
+tap 'buo/cask-upgrade'             # Allows for easy updating of cask apps via `brew cu`
+tap 'homebrew/cask-fonts'          # Nerd fonts tap
 
 # Core Dev stuff
-brew 'git'                    # Version control
-cask 'iterm2'                 # Best terminal for OSX
-brew 'neovim'                 # Drop-in replacement for vim
-brew 'aws-sam-cli'            # Testing lambda functions locally
-brew 'node'                   # For all your JavaScript application needs
-cask 'git-credential-manager' # Secure Git credential helper, needed for working with Github
+brew 'git'                         # Version control
+cask 'iterm2'                      # Best terminal for OSX
+brew 'neovim'                      # Drop-in replacement for vim
+brew 'aws-sam-cli'                 # Testing lambda functions locally
+brew 'node'                        # For all your JavaScript application needs
+cask 'git-credential-manager-core' # Secure Git credential helper, needed for working with Github
 
 # Customization apps
-cask 'karabiner-elements'     # Keybinding manager
-cask 'moom'                   # Window management
+cask 'karabiner-elements'          # Keybinding manager
+cask 'moom'                        # Window management
 
 # Common UI based apps
-cask 'alfred'                 # Productivity shortcut suite
-cask 'spotify'                # Music
-cask 'slack'                  # Chat
-cask 'obsidian'               # Personal knowledge base
-cask 'lastpass'               # Password manager
-#cask 'istat-menus'            # Resource status visualizer for the menu
+cask 'alfred'                      # Productivity shortcut suite
+cask 'spotify'                     # Music
+cask 'slack'                       # Chat
+cask 'obsidian'                    # Personal knowledge base
+cask 'lastpass'                    # Password manager
+#cask 'istat-menus'                # Resource status visualizer for the menu
 
 # Dev specific UI based apps
-cask 'intellij-idea'          # IDE
-cask 'dash'                   # API documentation browser and code snippet manager, license in gmail
+cask 'intellij-idea'               # IDE
+cask 'dash'                        # API documentation browser and code snippet manager, license in gmail
 
 # Transmit install v5 by default, but only have a v4 license
 # https://download.panic.com/transmit/Transmit-4-Latest.zip
 # cask 'transmit'
 
 # Other Cool CLI Tools
-brew 'zplug'                  # zsh plug-in manager
-brew 'tldr'                   # Simplified man pages
-brew 'exa'                    # Improved ls
-brew 'bat'                    # Improved cat
-brew 'diff-so-fancy'          # Prettier diff
-brew 'fd'                     # Faster find
-brew 'fzf'                    # Fuzzy finder, can leverage fd to work faster
-brew 'ag'                     # The Silver Searcher, faster grep
-brew 'jq'                     # JSON processor
-brew 'procs'                  # Improved ps
-brew 'bpytop'                 # Improved htop
-brew 'gping'                  # Improved ping
-brew 'dua-cli'                # Improved du
-brew 'duf'                    # Improved df
-brew 'ranger'                 # File browser with VI key bindings
-brew 'pv'                     # Track pipe progress
-brew 'rm-improved'            # Improved rm
-brew 'lolcat'                 # Rainbows in the console
+brew 'zplug'                       # zsh plug-in manager
+brew 'tldr'                        # Simplified man pages
+brew 'exa'                         # Improved ls
+brew 'bat'                         # Improved cat
+brew 'diff-so-fancy'               # Prettier diff
+brew 'fd'                          # Faster find
+brew 'fzf'                         # Fuzzy finder, can leverage fd to work faster
+brew 'ag'                          # The Silver Searcher, faster grep
+brew 'jq'                          # JSON processor
+brew 'procs'                       # Improved ps
+brew 'bpytop'                      # Improved htop
+brew 'gping'                       # Improved ping
+brew 'dua-cli'                     # Improved du
+brew 'duf'                         # Improved df
+brew 'ranger'                      # File browser with VI key bindings
+brew 'pv'                          # Track pipe progress
+brew 'rm-improved'                 # Improved rm
+brew 'lolcat'                      # Rainbows in the console
