@@ -115,8 +115,14 @@ else
 fi
 
 if [ $SYS = $LINUX ]; then
-  echo "Installing recommended Homebrew dependencies"
-  sudo yum groupinstall 'Development Tools'
+  yum_brew_tool_group="Development Tools"
+  if yum grouplist installed "$yum_brew_tool_group" 2>&1 >/dev/null | grep "no environments/groups match"; then
+    echo "Installing recommended Homebrew dependencies for Linux"
+    sudo yum -y -q groupinstall "$yum_brew_tool_group"
+    sudo yum groups mark install "$yum_brew_tool_group"
+  else
+    echo "Linux Homebrew dependencies already installed"
+  fi
 fi
 
 BREW_FILE="$DOT_ROOT/Brewfile.common"
