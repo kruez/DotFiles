@@ -3,6 +3,13 @@ export TJL_COMMON_IMPORTED=1
 # Preferred editor for local and remote sessions
 export EDITOR=nvim
 
+# Pyenv config
+# https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
