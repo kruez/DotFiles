@@ -50,14 +50,6 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-# Install CLI syntax highlighting
-# We install this the old fashioned way since the one installed from zplug seems way slower
-ZSH_SYNTAX_PLUGIN_DIR=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-if [ ! -d "$ZSH_SYNTAX_PLUGIN_DIR" ]; then
-  echo "Installing oh-my-zsh syntax highlighting plugin"
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_SYNTAX_PLUGIN_DIR
-fi
-
 # Install powerline fonts
 if [ $SYS = $MAC ]; then
     FONT_DIR="$HOME/Library/Fonts"

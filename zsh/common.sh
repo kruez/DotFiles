@@ -14,8 +14,7 @@ eval "$(pyenv init -)"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# REMEMBER: zsh-syntax-highlighting MUST be last
-plugins=(git zsh-syntax-highlighting)
+plugins=(git)
 
 # Display red dots whilst waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -55,11 +54,14 @@ source $ZSH/oh-my-zsh.sh
 # Load up plugins to use with zsh/oh-my-zsh
 source $HOMEBREW_ROOT/opt/zplug/init.zsh
 
+# ZSH theme
 zplug romkatv/powerlevel10k, as:theme, depth:1
+
+# git+fzf utility
 zplug wfxr/forgit
 
-# Syntax plugin was much slower when installed through zplug
-#zplug "zsh-users/zsh-syntax-highlighting", defer:2
+# CLI syntax highlighter
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
