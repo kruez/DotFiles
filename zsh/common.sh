@@ -159,6 +159,7 @@ export FZF_DEFAULT_OPTS="
 --prompt='∼ ' --pointer='▶' --marker='✓'
 --bind '?:toggle-preview'
 --bind 'ctrl-e:execute(nvim {} < /dev/tty > /dev/tty)'
+--bind 'ctrl-b:preview-page-up,ctrl-f:preview-page-down,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down'
 "
 
 # Simple searching with FZF via CTRL-T
