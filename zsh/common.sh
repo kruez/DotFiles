@@ -17,28 +17,6 @@ eval "$(pyenv init -)"
 # REMEMBER: zsh-syntax-highlighting MUST be last
 plugins=(git zsh-syntax-highlighting)
 
-source $HOMEBREW_ROOT/opt/zplug/init.zsh
-
-zplug romkatv/powerlevel10k, as:theme, depth:1
-
-# Syntax plugin was much slower when installed through zplug
-#zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install new plugins? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-zplug load
-
-# Oh-my-zsh Theme Settings
-export CUSTOM_ZSH_THEMES=$MY_DOT_ROOT/zsh-themes
-source $CUSTOM_ZSH_THEMES/current.sh
-
-
 # Display red dots whilst waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
@@ -72,6 +50,31 @@ COMPLETION_WAITING_DOTS="true"
 
 export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+
+
+# Load up plugins to use with zsh/oh-my-zsh
+source $HOMEBREW_ROOT/opt/zplug/init.zsh
+
+zplug romkatv/powerlevel10k, as:theme, depth:1
+zplug wfxr/forgit
+
+# Syntax plugin was much slower when installed through zplug
+#zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install new plugins? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
+
+# Oh-my-zsh Theme Settings
+export CUSTOM_ZSH_THEMES=$MY_DOT_ROOT/zsh-themes
+source $CUSTOM_ZSH_THEMES/current.sh
+
 
 ###########
 # ALIASES #
