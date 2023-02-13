@@ -1,19 +1,37 @@
-set nocompatible  " This must be first, because it changes other options as side effect
+set nocompatible    " This must be first, because it changes other options as side effect
 
 syntax on
 
 set relativenumber  " show relative line numbers
 set number          " show current line number
+set hidden          " allow switching buffers without saving prompts
+set expandtab       " tabs are spaces
+set tabstop=4       " number of visual spaces per TAB
+set softtabstop=4   " number of spaces in tab when editing
+set shiftwidth=4    " number of spaces intended with the reindent operations
+set autoindent      " maintain indentation when inserting a newline
 
-set expandtab      " tabs are spaces
-set tabstop=4      " number of visual spaces per TAB
-set softtabstop=4  " number of spaces in tab when editing
-set shiftwidth=4   " number of spaces intended with the reindent operations
+let mapleader = ","
 
-set autoindent  " maintain indentation when inserting a newline
+" Use ripgrep instead of normal grep for file search
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+
+" Remap some key bindings
 
 " Toggle Nerd Tree display Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
+
+" Setup some FZF shortcuts
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <Leader>f :Rg<CR>
+nnoremap <silent> <Leader>/ :BLines<CR>
+nnoremap <silent> <Leader>' :Marks<CR>
+nnoremap <silent> <Leader>g :Commits<CR>
+nnoremap <silent> <Leader>H :Helptags<CR>
+nnoremap <silent> <Leader>hh :History<CR>
+nnoremap <silent> <Leader>h: :History:<CR>
+nnoremap <silent> <Leader>h/ :History/<CR>
 
 " Word Processor Mode - for editing plain english
 func! WordProcessorMode()
@@ -62,6 +80,7 @@ call plug#begin('~/.vim/plugged')
 
 " Enable fzf in vim
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-sensible'
 
