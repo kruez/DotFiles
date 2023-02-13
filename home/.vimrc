@@ -87,5 +87,9 @@ Plug 'tpope/vim-sensible'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
+" Make matching parentheses rainbow colors
+Plug 'frazrepo/vim-rainbow'
+let g:rainbow_active = 1
+
 " Add plugins to &runtimepath
 call plug#end()
