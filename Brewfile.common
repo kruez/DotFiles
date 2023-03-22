@@ -21,7 +21,7 @@ cask 'alfred'                      # Productivity shortcut suite
 cask 'spotify'                     # Music
 cask 'slack'                       # Chat
 cask 'obsidian'                    # Personal knowledge base
-cask 'lastpass'                    # Password manager
+cask '1password'                   # Password manager
 #cask 'istat-menus'                # Resource status visualizer for the menu
 
 # Dev specific UI based apps
