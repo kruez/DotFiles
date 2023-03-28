@@ -129,7 +129,7 @@ fi
 
 
 # Pyenv should be installed by brew
-if $SYS = $MAC; then
+if [ $SYS = $MAC ]; then
   echo "Installing python versions"
   # When prompted to re-install if already installed say no (N)
   # Some issues when installing python2 on linux, not needed for now
