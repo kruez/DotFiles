@@ -23,9 +23,11 @@ cask 'slack'                       # Chat
 cask 'obsidian'                    # Personal knowledge base
 cask '1password'                   # Password manager
 #cask 'istat-menus'                # Resource status visualizer for the menu
+cask 'firefox'                     # Best browser
 
 # Dev specific UI based apps
 cask 'intellij-idea'               # IDE
+cask 'visual-studio-code'          # Also IDE
 cask 'dash'                        # API documentation browser and code snippet manager, license in gmail
 
 # Transmit install v5 by default, but only have a v4 license
