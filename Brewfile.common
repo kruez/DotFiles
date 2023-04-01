@@ -54,3 +54,4 @@ brew 'ranger'                      # File browser with VI key bindings
 brew 'pv'                          # Track pipe progress
 brew 'rm-improved'                 # Improved rm
 brew 'lolcat'                      # Rainbows in the console
+brew 'coreutils'                   # Basic GNU utilities
