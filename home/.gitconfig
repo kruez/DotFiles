@@ -54,7 +54,7 @@
 	helper = !aws codecommit credential-helper $@
 	UseHttpPath = true
 	helper = 
-	helper = /usr/local/bin/git-credential-manager
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [interactive]
     diffFilter = diff-so-fancy --patch
 [includeIf "hasconfig:remote.*.url:*://*.amazon.com*/**"]
