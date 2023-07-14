@@ -65,3 +65,19 @@ tab-item.active tab-counter {
 
 ## Resources
 * [gruvbox themes](https://github.com/gruvbox-community/gruvbox-contrib/)
+
+# Usage
+Given all the customization and various utils installed, we can keep track of various new items here to help refresh my memory until they're ingrained.
+
+## fzf - fuzzy finder
+- `CTRL-T` - Search for files and directories with a given name
+- `CTRL-R` - Search command history
+- `ALT-C` - Search and `cd` into the directory
+
+## ranger - file tree UI
+- 'r' - open ranger
+
+
+## Improved Utils
+- `gping` - Graphical ping
+
