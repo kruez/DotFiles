@@ -133,8 +133,8 @@ if [ $SYS = $MAC ]; then
   echo "Installing python versions"
   # When prompted to re-install if already installed say no (N)
   # Some issues when installing python2 on linux, not needed for now
-  yes "N" | pyenv install 2
-  yes "N" | pyenv install 3
+#  yes "N" | pyenv install 2
+#  yes "N" | pyenv install 3
 fi
 
 
