@@ -11,6 +11,7 @@ brew 'aws-sam-cli'                 # Testing lambda functions locally
 brew 'node'                        # For all your JavaScript application needs
 #cask 'git-credential-manager-core' # Secure Git credential helper, needed for working with Github
 #brew 'pyenv'                       # Python enviorment manager
+brew 'jenv'                        # Java environment manager
 
 # Customization apps
 #cask 'karabiner-elements'          # Keybinding manager
