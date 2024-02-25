@@ -27,9 +27,9 @@ brew 'jenv'                        # Java environment manager
 #cask 'firefox'                     # Best browser
 
 # Dev specific UI based apps
-#cask 'intellij-idea'               # IDE
-#cask 'visual-studio-code'          # Also IDE
-#cask 'dash'                        # API documentation browser and code snippet manager, license in gmail
+cask 'intellij-idea-ce'            # IDE
+cask 'visual-studio-code'          # Also IDE
+cask 'dash'                        # API documentation browser and code snippet manager, license in gmail
 
 # Transmit install v5 by default, but only have a v4 license
 # https://download.panic.com/transmit/Transmit-4-Latest.zip
