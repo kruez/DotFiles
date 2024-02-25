@@ -38,7 +38,7 @@ cask 'dash'                        # API documentation browser and code snippet 
 # Other Cool CLI Tools
 brew 'zplug'                       # zsh plug-in manager
 brew 'tldr'                        # Simplified man pages
-brew 'exa'                         # Improved ls
+brew 'eza'                         # Improved ls
 brew 'bat'                         # Improved cat
 brew 'diff-so-fancy'               # Prettier diff
 brew 'fd'                          # Faster find
