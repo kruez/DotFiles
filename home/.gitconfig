@@ -1,7 +1,6 @@
 [color]
     ui = auto
 [core]
-    pager = diff-so-fancy | less --tabs=4 -FMRiX
     excludesfile = ~/.gitignore_global
     editor = nvim
 [push]
@@ -10,6 +9,7 @@
     enabled = true
 [alias]
     df = difftool
+    dlog = "-c diff.external=difft log -p --ext-diff"
     mrg = mergetool
     st = status
     ci = commit
@@ -37,16 +37,18 @@
 	new = green bold
 	whitespace = red reverse
 [diff]
-    tool = diffmerge
+    tool = difftastic
 [difftool]
     prompt = false
-[difftool "diffmerge"]
-    cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
 [merge]
     tool = diffmerge
 [mergetool "diffmerge"]
     cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
     trustExitCode = true
+[pager]
+    difftool = true
 [user]
 	name = kruez
 	email = timothy.lawson@gmail.com

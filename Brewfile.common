@@ -40,7 +40,7 @@ brew 'zplug'                       # zsh plug-in manager
 brew 'tldr'                        # Simplified man pages
 brew 'eza'                         # Improved ls
 brew 'bat'                         # Improved cat
-brew 'diff-so-fancy'               # Prettier diff
+brew 'difftastic'                  # Improved diff tool
 brew 'fd'                          # Faster find
 brew 'fzf'                         # Fuzzy finder, can leverage fd to work faster
 brew 'ag'                          # The Silver Searcher, faster grep
