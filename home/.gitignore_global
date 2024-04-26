@@ -33,3 +33,6 @@ node_modules
 
 # Brew Bundle Files
 Brewfile.*lock.json
+
+# jenv config
+.java-version
