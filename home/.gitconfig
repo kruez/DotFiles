@@ -50,11 +50,11 @@
 [user]
 	name = kruez
 	email = timothy.lawson@gmail.com
-[credential]
-	helper = !aws codecommit credential-helper $@
-	UseHttpPath = true
-	helper = 
-	helper = /usr/local/share/gcm-core/git-credential-manager
+#[credential]
+#	helper = !aws codecommit credential-helper $@
+#	UseHttpPath = true
+#	helper = 
+#	helper = /usr/local/share/gcm-core/git-credential-manager
 [interactive]
     diffFilter = diff-so-fancy --patch
 [includeIf "hasconfig:remote.*.url:*://*creditacceptance*/**"]
