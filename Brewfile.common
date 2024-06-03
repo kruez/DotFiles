@@ -5,7 +5,7 @@ tap 'homebrew/cask-fonts'          # Nerd fonts tap
 
 # Core Dev stuff
 brew 'git'                         # Version control
-#cask 'iterm2'                      # Best terminal for OSX
+cask 'iterm2'                      # Best terminal for OSX
 brew 'neovim'                      # Drop-in replacement for vim
 brew 'aws-sam-cli'                 # Testing lambda functions locally
 brew 'node'                        # For all your JavaScript application needs
@@ -14,21 +14,21 @@ brew 'node'                        # For all your JavaScript application needs
 brew 'jenv'                        # Java environment manager
 
 # Customization apps
-#cask 'karabiner-elements'          # Keybinding manager
-#cask 'moom'                        # Window management
+cask 'karabiner-elements'          # Keybinding manager
+cask 'moom'                        # Window management
 
 # Common UI based apps
-#cask 'alfred'                      # Productivity shortcut suite
+cask 'alfred'                      # Productivity shortcut suite
 #cask 'spotify'                     # Music
 #cask 'slack'                       # Chat
-#cask 'obsidian'                    # Personal knowledge base
-#cask '1password'                   # Password manager
+cask 'obsidian'                    # Personal knowledge base
+cask '1password'                   # Password manager
 #cask 'istat-menus'                 # Resource status visualizer for the menu
-#cask 'firefox'                     # Best browser
+cask 'firefox'                     # Best browser
 
 # Dev specific UI based apps
-cask 'intellij-idea-ce'            # IDE
-cask 'visual-studio-code'          # Also IDE
+#cask 'intellij-idea-ce'            # IDE
+#cask 'visual-studio-code'          # Also IDE
 cask 'dash'                        # API documentation browser and code snippet manager, license in gmail
 
 # Transmit install v5 by default, but only have a v4 license
@@ -61,4 +61,4 @@ brew 'gdb'                         # GNU debugger
 
 # UI utility apps
 #cask 'wireshare'                   # Network packet sniffer
-cask 'wireshark-chmodbpf'
+#cask 'wireshark-chmodbpf'
