@@ -57,7 +57,7 @@ brew 'pv'                          # Track pipe progress
 brew 'rm-improved'                 # Improved rm
 brew 'lolcat'                      # Rainbows in the console
 brew 'coreutils'                   # Basic GNU utilities
-brew 'gdb'                         # GNU debugger
+#brew 'gdb'                         # GNU debugger, not available on Apple silicon yet
 
 # UI utility apps
 #cask 'wireshare'                   # Network packet sniffer

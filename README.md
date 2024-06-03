@@ -1,7 +1,5 @@
 # kruez dotfiles
-
 # Manual Installation
-
 ## iTerm2
 * Install the iterm2 color themes and setup them up on the profiles
 
@@ -81,3 +79,7 @@ Given all the customization and various utils installed, we can keep track of va
 ## Improved Utils
 - `gping` - Graphical ping
 
+# To Fix
+- Initial run of install script gets hijacked when running the oh-my-zsh install
+- brew install requires sudo
+- homebrew/cask-fonts tap is deprecated
