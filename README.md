@@ -60,6 +60,9 @@ tab-item.active tab-counter {
   display: none;
 }
 ```
+## jenv
+While `jenv` will install via the Brew commons file, you'll need to make sure to run
+some additional setup defined on the jenv homepage to have it properly set `JAVA_HOME.
 
 ## Resources
 * [gruvbox themes](https://github.com/gruvbox-community/gruvbox-contrib/)
