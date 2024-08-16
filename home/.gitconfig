@@ -61,6 +61,8 @@
     diffFilter = diff-so-fancy --patch
 [includeIf "hasconfig:remote.*.url:*://*creditacceptance*/**"]
     path = ~/.gitconfig-cac
+[includeIf "hasconfig:remote.*.url:*://**/credit-acceptance*/**"]
+    path = ~/.gitconfig-cac
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [init]
@@ -68,3 +70,5 @@
 [credential]
 	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://bitbucket.creditacceptance.com"]
+	provider = bitbucket
