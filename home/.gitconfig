@@ -63,12 +63,10 @@
     path = ~/.gitconfig-cac
 [includeIf "hasconfig:remote.*.url:*://**/credit-acceptance*/**"]
     path = ~/.gitconfig-cac
-[credential "https://dev.azure.com"]
-	useHttpPath = true
 [init]
 	defaultBranch = main
 [credential]
 	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
-[credential "https://bitbucket.creditacceptance.com"]
-	provider = bitbucket
+[credential "https://dev.azure.com"]
+	useHttpPath = true
