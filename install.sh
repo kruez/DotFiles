@@ -142,6 +142,12 @@ fi
 echo "Installing npm stuff 🐶"
 npm_global_install awsp # AWS profile switcher
 
+# Install Node Version Manager
+NVM_HOME_DIR=$HOME/.nvm
+if [ ! -d "$NVM_HOME_DIR" ]; then
+  echo "Installing Node Version Manager ☊"
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
+fi
 
 echo "🚨 REMEMBER TO: Symlink the custom Firefox chrome into your %FIREFOX_PROFILE%/chrome/ directory 🦊"
 

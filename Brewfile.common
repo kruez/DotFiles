@@ -8,7 +8,8 @@ brew 'git'                         # Version control
 cask 'iterm2'                      # Best terminal for OSX
 brew 'neovim'                      # Drop-in replacement for vim
 brew 'aws-sam-cli'                 # Testing lambda functions locally
-brew 'node'                        # For all your JavaScript application needs
+# Need to use nvm instead
+#brew 'node'                        # For all your JavaScript application needs
 cask 'git-credential-manager'      # Secure Git credential helper, needed for working with Github
 #brew 'pyenv'                       # Python enviorment manager
 brew 'jenv'                        # Java environment manager
