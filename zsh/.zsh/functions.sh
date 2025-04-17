@@ -19,12 +19,16 @@ npm_global_install() {
 
 # Cheat sheet helper
 cheat() {
-  # If no topic is given, list all available cheat sheets
+  # If no topic is given, list all available local cheat sheets
   if [[ $# -eq 0 ]]; then
-    echo "Available cheat topics:"
+    echo "Available local cheat topics:"
     for cheatfile in "$DOTFILES_ROOT/cheat"/*.md; do
       echo "  - $(basename "${cheatfile%.md}")"
     done
+    echo
+    echo "For community cheats, try:"
+    echo "  curl https://cheat.sh/<topic>"
+    echo "  tldr <topic>  # install via 'brew install tldr'"
     return 0
   fi
   local topic=$1
@@ -32,12 +36,13 @@ cheat() {
   if [[ -f "$file" ]]; then
     bat --style=numbers --pager=less "$file"
   else
-    echo "No cheat sheet for '$topic'"
-    echo "Available topics:"
-    for cheatfile in "$DOTFILES_ROOT/cheat"/*.md; do
-      echo "  - $(basename "${cheatfile%.md}")"
-    done
-    return 1
+    echo "No local cheat sheet for '$topic'."
+    echo "Fetching from cheat.sh..."
+    # Display remote cheat.sh result with ANSI colors
+    curl -s "https://cheat.sh/${topic}" | less -R
+    echo
+    echo "Tip: install 'tldr' for concise TL;DR pages: tldr $topic"
+    return 0
   fi
 }
 
