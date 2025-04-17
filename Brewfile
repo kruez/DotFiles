@@ -3,6 +3,11 @@ tap 'aws/tap'                      # For aws-sam-cli
 tap 'buo/cask-upgrade'             # Allows for easy updating of cask apps via `brew cu`
 brew tap homebrew/fonts            # Fonts tap (replaces deprecated cask-fonts)
 brew 'stow'                         # GNU Stow for modular dotfile management
+brew 'asdf'                         # Universal version manager
+brew 'direnv'                      # Project-level environment loading
+brew 'delta'                       # Enhanced git diffs
+brew 'tmuxinator'                  # Tmux session manager
+brew 'chezmoi'                     # Templated dotfile manager
 
 # Core Dev stuff
 brew 'git'                         # Version control

@@ -6,8 +6,19 @@ export EDITOR=nvim
 # Pyenv config (only if installed)
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+# Initialize pyenv (if installed)
 if command -v pyenv >/dev/null 2>&1; then
   eval "$(pyenv init -)"
+fi
+
+# Initialize asdf (if installed)
+if command -v asdf >/dev/null 2>&1; then
+  . "$(brew --prefix asdf)/libexec/asdf.sh"
+fi
+
+# Initialize direnv (if installed)
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
 fi
 
 

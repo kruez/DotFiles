@@ -1,5 +1,22 @@
 #!/usr/bin/env zsh
 
+# Locate this stub file and derive the repository root
+realpath_z() {
+  local source=$1
+  while [ -L "$source" ]; do
+    local target=$(readlink "$source")
+    if [[ "$target" == /* ]]; then
+      source="$target"
+    else
+      source="$(dirname "$source")/$target"
+    fi
+  done
+  echo "$source"
+}
+
+SCRIPT_FILE="$(realpath_z "${(%):-%N}")"
+DOTFILES_ROOT="$(cd "$(dirname "$SCRIPT_FILE")/.." && pwd -P)"
+
 # Entry-point for Zsh (stowed to ~/.zshrc)
 ZSH_MODULE="$HOME/.zsh"
 

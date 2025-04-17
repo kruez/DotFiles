@@ -35,8 +35,9 @@ Each top-level directory is a Stow module mapping into your home directory:
 .
 ├── Brewfile
 ├── install.sh
-├── scripts/
+├── scripts/        # helper scripts (e.g. CI tests)
 │   └── test-install.sh
+├── cheat/          # markdown cheat sheets (view via `cheat`)
 ├── bin/            # custom scripts → ~/bin
 ├── home/           # dotfiles → ~/.(gitconfig|vimrc|tmux.conf|...)
 ├── config/         # ~/.config/ (nvim, ranger)
@@ -76,6 +77,7 @@ stow --dir="$DOTFILES_DIR" --target="$HOME" --restow zsh
 - `homebrew_root()` → returns Homebrew install prefix
 - `npm_global_install <pkg>` → idempotent npm global install
 - `dif file1 file2` → pretty diff via diff-so-fancy
+- `cheat [topic]`    → open a cheat sheet; no args lists available topics
 
 ### FZF
 - Uses `fd` under the hood: `--type f --hidden --follow --exclude .git`

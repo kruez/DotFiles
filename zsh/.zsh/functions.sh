@@ -16,3 +16,37 @@ npm_global_install() {
       echo "$1 already installed"
   fi
 }
+
+# Cheat sheet helper
+cheat() {
+  # If no topic is given, list all available cheat sheets
+  if [[ $# -eq 0 ]]; then
+    echo "Available cheat topics:"
+    for cheatfile in "$DOTFILES_ROOT/cheat"/*.md; do
+      echo "  - $(basename "${cheatfile%.md}")"
+    done
+    return 0
+  fi
+  local topic=$1
+  local file="$DOTFILES_ROOT/cheat/$topic.md"
+  if [[ -f "$file" ]]; then
+    bat --style=numbers --pager=less "$file"
+  else
+    echo "No cheat sheet for '$topic'"
+    echo "Available topics:"
+    for cheatfile in "$DOTFILES_ROOT/cheat"/*.md; do
+      echo "  - $(basename "${cheatfile%.md}")"
+    done
+    return 1
+  fi
+}
+
+# Shortcut alias for cheatsheets
+alias cs='cheat'
+alias cheats='cheat'
+
+# Use delta for diff if available
+if command -v delta >/dev/null 2>&1; then
+  alias diff='delta'
+  alias gitd='git diff | delta'
+fi
