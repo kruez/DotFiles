@@ -55,3 +55,71 @@ if command -v delta >/dev/null 2>&1; then
   alias diff='delta'
   alias gitd='git diff | delta'
 fi
+
+# -----------------------------------------------------------------------------
+# Auto correction via thefuck (install via `brew install thefuck`)
+if command -v thefuck >/dev/null 2>&1; then
+  eval "$(thefuck --alias)"
+fi
+
+# AI-powered shell helper (install OpenAI CLI via `brew install openai` and set OPENAI_API_KEY)
+if command -v openai >/dev/null 2>&1 && command -v jq >/dev/null 2>&1; then
+  # one-shot AI translator function
+  ai() {
+    openai api chat.completions.create \
+      -m gpt-3.5-turbo \
+      -p "Translate to bash: $*" \
+      --stream \
+    | jq -r '.choices[].delta.content'
+  }
+  alias ask=ai
+  # zle widget: type description and press Ctrl-X g to replace buffer with AI-generated command
+  ai_widget() {
+    local cmd
+    cmd=$(openai api chat.completions.create \
+      -m gpt-3.5-turbo \
+      -p "Translate to bash: $BUFFER" \
+      | jq -r '.choices[0].message.content')
+    if [[ -n $cmd ]]; then
+      BUFFER="$cmd"
+      zle accept-line
+    fi
+  }
+  zle -N ai_widget
+  bindkey '^Xg' ai_widget
+fi
+
+# -----------------------------------------------------------------------------
+# Unified fix function: try thefuck first, then AI, else report no suggestion
+fix() {
+  # Attempt local autocorrect via thefuck alias
+  if command -v fuck >/dev/null 2>&1; then
+    # --yes runs the suggested fix automatically
+    if fuck --yes 2>/dev/null; then
+      return 0
+    fi
+  fi
+
+  # Fallback: ask AI to translate last command
+  if command -v openai >/dev/null 2>&1 && command -v jq >/dev/null 2>&1; then
+    # Capture the previous command
+    local last_cmd
+    last_cmd=$(fc -ln -1)
+    echo "AI suggestion for: $last_cmd"
+    local suggestion
+    suggestion=$(openai api chat.completions.create \
+      -m gpt-3.5-turbo \
+      -p "Translate to bash: $last_cmd" \
+      | jq -r '.choices[0].message.content')
+    if [[ -n $suggestion ]]; then
+      echo "+ $suggestion"
+      eval "$suggestion"
+      return 0
+    fi
+  fi
+
+  echo "No suggestions available from thefuck or AI."
+  return 1
+}
+alias fix=fix
+alias fixit=fix

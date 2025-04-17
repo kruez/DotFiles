@@ -1,7 +1,7 @@
 tap 'microsoft/git'                # Primarily needed for the git-credential-manager-core
 tap 'aws/tap'                      # For aws-sam-cli
 tap 'buo/cask-upgrade'             # Allows for easy updating of cask apps via `brew cu`
-brew tap homebrew/fonts            # Fonts tap (replaces deprecated cask-fonts)
+tap 'homebrew/fonts'               # Fonts tap (replaces deprecated cask-fonts)
 brew 'stow'                         # GNU Stow for modular dotfile management
 brew 'asdf'                         # Universal version manager
 brew 'direnv'                      # Project-level environment loading
@@ -45,6 +45,8 @@ cask 'dash'                        # API documentation browser and code snippet 
 # Other Cool CLI Tools
 brew 'zplug'                       # zsh plug-in manager
 brew 'tldr'                        # Simplified man pages
+brew 'thefuck'                     # Command auto-corrector (typo fixer)
+brew 'openai'                      # OpenAI CLI for AI-powered shell suggestions
 brew 'eza'                         # Improved ls
 brew 'bat'                         # Improved cat
 brew 'diff-so-fancy'               # Improved diff tool
