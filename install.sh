@@ -20,21 +20,56 @@ SYS=$([ `uname` = "Darwin" ] && echo "$MAC" || echo "$LINUX")
 
 echo "Starting personal DotFile configuration for $SYS"
 
+# Ensure Homebrew is installed (required for installing Stow)
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Installing Homebrew..."
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  # Load Homebrew environment for this session
+  if [ "$SYS" = "$MAC" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  else
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
+else
+  echo "Homebrew already installed"
+fi
+BREW_CMD=$(command -v brew)
+
 # Make note of the root of the current directory
 DOT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-DOT_ROOT_HOME=$DOT_ROOT/home
-DOT_ROOT_CONFIG=$DOT_ROOT/dotconfig
+# Load helper functions (npm_global_install, homebrew_root)
+source "$DOT_ROOT/zsh/.zsh/functions.sh"
+# Ensure GNU Stow is installed (for modular dotfile management)
+if ! command -v stow >/dev/null 2>&1; then
+  echo "Installing GNU Stow"
+  $BREW_CMD install stow
+fi
 
-source $DOT_ROOT/zsh/functions.sh
+# Clean up any old symlinks for 'home' and 'zsh' modules to ensure stow can restow properly
+for m in home zsh; do
+  echo "Cleaning existing links for module '$m'"
+  for src in $(find "$DOT_ROOT/$m" -mindepth 1 -maxdepth 1); do
+    rel="${src#$DOT_ROOT/$m/}"
+    tgt="$HOME/$rel"
+    if [ -e "$tgt" ] || [ -L "$tgt" ]; then
+      echo "  Removing $tgt"
+      rm -rf "$tgt"
+    fi
+  done
+done
 
-# Symlink stuff core stuff into place
-echo "Symlinking all files in $DOT_ROOT_HOME into home directory ⛓"
-find $DOT_ROOT_HOME -maxdepth 1 -mindepth 1 | while read file; do ln -sfv "$file" "$HOME"; done
-
-HOME_CONFIG=$HOME/.config
-mkdir -p $HOME_CONFIG
-echo "Symlinking all files in $DOT_ROOT_CONFIG into home .config directory ⛓"
-find $DOT_ROOT_CONFIG -maxdepth 1 -mindepth 1 | while read file; do ln -sfv "$file" "$HOME_CONFIG"; done
+# Stow modules into place
+MODULES=(home zsh config iterm2 firefox)
+# Stow modules into place, using restow to overwrite existing symlinks
+for m in "${MODULES[@]}"; do
+  TARGET="$HOME"
+  case "$m" in
+    iterm2) TARGET="$HOME/Library/Colors" ;;
+    firefox) TARGET="$HOME" ;;
+  esac
+  echo "Restowing module '$m' into $TARGET"
+  stow --dir="$DOT_ROOT" --target="$TARGET" --verbose --restow "$m"
+done
 
 # Install Tmux plugins
 TPM_INSTALL_DIR=$HOME/.tmux/plugins/tpm
@@ -45,9 +80,10 @@ fi
 
 
 # Setup oh-my-zsh and associated themes/fonts/plugins
+# Setup oh-my-zsh (without modifying stub .zshrc)
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  echo "Installing oh-my-zsh 🙀"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  echo "Installing oh-my-zsh"
+  git clone https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh"
 fi
 
 # Install powerline fonts
@@ -84,29 +120,14 @@ else
     echo "MesloLGS Nerd Fonts installed 💪"
 fi
 
-if [ $INSTALL_MODE = 'home' ]; then
-  echo "Symlinking in .zshrc file 👑"
-  ln -sfv "$DOT_ROOT/zsh/$SYS-zshrc.sh" $HOME/.zshrc
-fi
 
 echo "🚀 REMEMBER TO: To complete powerlevel10k setup visit: https://github.com/romkatv/powerlevel10k 🐸"
 
 
-# Handle Brew setup and update
-BREW_BIN_DIR=/home/linuxbrew/.linuxbrew/bin
-if [ $SYS = $MAC ]; then
-  BREW_BIN_DIR=/opt/homebrew/bin
-fi
-BREW_CMD=$BREW_BIN_DIR/brew
-
-if [ -x "$(command -v $BREW_CMD)" ]; then
-  echo "Updating brew in case it hasn't been done recently..."
-  $BREW_CMD update
-  $BREW_CMD upgrade
-else
-  echo "Installing Homebrew my dudes 🍻"
-  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
+# Homebrew update & upgrade (brew already installed at script start)
+echo "Updating Homebrew and upgrading packages..."
+$BREW_CMD update
+$BREW_CMD upgrade
 
 if [ $SYS = $LINUX ]; then
   yum_brew_tool_group="Development Tools"
@@ -119,12 +140,12 @@ if [ $SYS = $LINUX ]; then
   fi
 fi
 
-BREW_FILE="$DOT_ROOT/Brewfile.common"
-if $BREW_CMD bundle check --file $BREW_FILE; then
+BREW_FILE="$DOT_ROOT/Brewfile"
+if $BREW_CMD bundle check --file $BREW_FILE >/dev/null 2>&1; then
   echo "Brew bundle for common items up-to-date"
 else
   echo "Launching Brew bundler for common items 🤖"
-  $BREW_CMD bundle --file $BREW_FILE
+  $BREW_CMD bundle --file $BREW_FILE >/dev/null 2>&1
 fi
 
 
@@ -149,6 +170,6 @@ if [ ! -d "$NVM_HOME_DIR" ]; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
 fi
 
-echo "🚨 REMEMBER TO: Symlink the custom Firefox chrome into your %FIREFOX_PROFILE%/chrome/ directory 🦊"
+echo "🚀 Firefox CSS has been stowed via the 'firefox' module into ~/.mozilla/firefox/chrome/userChrome.css"
 
 echo "Personal DotFile configuration complete ✨"

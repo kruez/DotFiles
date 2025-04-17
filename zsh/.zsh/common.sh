@@ -3,11 +3,12 @@ export TJL_COMMON_IMPORTED=1
 # Preferred editor for local and remote sessions
 export EDITOR=nvim
 
-# Pyenv config
-# https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv
+# Pyenv config (only if installed)
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv >/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -47,31 +48,31 @@ COMPLETION_WAITING_DOTS="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
+# Oh My Zsh initialization
 export ZSH=$HOME/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
-
-# Load up plugins to use with zsh/oh-my-zsh
-source $HOMEBREW_ROOT/opt/zplug/init.zsh
-
-# ZSH theme
-zplug romkatv/powerlevel10k, as:theme, depth:1
-
-# git+fzf utility
-zplug wfxr/forgit
-
-# CLI syntax highlighter
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install new plugins? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+if [ -f "$ZSH/oh-my-zsh.sh" ]; then
+  source "$ZSH/oh-my-zsh.sh"
 fi
 
-zplug load
+
+## zplug plugin manager (if available)
+if [ -n "$HOMEBREW_ROOT" ] && [ -f "$HOMEBREW_ROOT/opt/zplug/init.zsh" ]; then
+  source "$HOMEBREW_ROOT/opt/zplug/init.zsh"
+  # ZSH theme
+  zplug romkatv/powerlevel10k, as:theme, depth:1
+  # git+fzf utility
+  zplug wfxr/forgit
+  # CLI syntax highlighter
+  zplug "zsh-users/zsh-syntax-highlighting", defer:2
+  # Install plugins if there are plugins that have not been installed
+  if ! zplug check --verbose; then
+    printf "Install new plugins? [y/N]: "
+    if read -q; then
+      echo; zplug install
+    fi
+  fi
+  zplug load
+fi
 
 # Oh-my-zsh Theme Settings
 export CUSTOM_ZSH_THEMES=$MY_DOT_ROOT/zsh-themes

@@ -2,6 +2,7 @@ tap 'microsoft/git'                # Primarily needed for the git-credential-man
 tap 'aws/tap'                      # For aws-sam-cli
 tap 'buo/cask-upgrade'             # Allows for easy updating of cask apps via `brew cu`
 tap 'homebrew/cask-fonts'          # Nerd fonts tap
+brew 'stow'                         # GNU Stow for modular dotfile management
 
 # Core Dev stuff
 brew 'git'                         # Version control

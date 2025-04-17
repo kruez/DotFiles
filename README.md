@@ -1,4 +1,42 @@
+## Automated Testing of install.sh
+
+We provide a helper script to verify your installer in isolation:
+
+- **Container mode** (Ubuntu 22.04): requires Docker or Podman. If neither is installed, the script will attempt to install Podman.
+  ```bash
+  scripts/test-install.sh
+  ```
+- **Local mode** (macOS or Linux host): runs the installer in a temporary HOME sandbox on your host.
+  ```bash
+  scripts/test-install.sh --local
+  ```
+  This will set up a clean `$HOME` and run `install.sh home` as a non‑root user.
+
+Inspect the script’s output for any errors. After a successful local run, the temporary HOME directory path will be printed for inspection.
 # kruez dotfiles
+
+## Quickstart (Stow-based)
+
+This repository now uses GNU Stow for modular dotfile management. To bootstrap on a fresh machine:
+
+```bash
+# Clone into your workspace (adjust path as desired):
+git clone <repo-url> ~/Workspace/DotFiles
+cd ~/Workspace/DotFiles
+# Bootstrap for personal (home) or work machine:
+./install.sh home   # or 'work'
+```
+
+Modules will be symlinked automatically into your $HOME (and ~/Library/Colors for iTerm2).
+
+## Managing Modules
+If you need to install or re‑install a single module (without running the full installer), you can use GNU Stow directly. Note that `~` is not expanded by `stow`, so use a full path:
+```bash
+DOTFILES_DIR="$HOME/Workspace/DotFiles"
+# Restow your zsh config:
+stow --dir="$DOTFILES_DIR" --target="$HOME" --restow zsh
+```
+
 # Manual Installation
 ## iTerm2
 * Install the iterm2 color themes and setup them up on the profiles
