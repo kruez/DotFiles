@@ -1,126 +1,99 @@
-## Automated Testing of install.sh
+# kruez DotFiles
 
-We provide a helper script to verify your installer in isolation:
+Modular, Stow-based management of personal dotfiles for home and work environments.
 
-- **Container mode** (Ubuntu 22.04): requires Docker or Podman. If neither is installed, the script will attempt to install Podman.
-  ```bash
-  scripts/test-install.sh
-  ```
-- **Local mode** (macOS or Linux host): runs the installer in a temporary HOME sandbox on your host.
-  ```bash
-  scripts/test-install.sh --local
-  ```
-  This will set up a clean `$HOME` and run `install.sh home` as a non‑root user.
+## Quickstart
 
-Inspect the script’s output for any errors. After a successful local run, the temporary HOME directory path will be printed for inspection.
-# kruez dotfiles
-
-## Quickstart (Stow-based)
-
-This repository now uses GNU Stow for modular dotfile management. To bootstrap on a fresh machine:
-
+Clone the repository and bootstrap:
 ```bash
 # Clone into your workspace (adjust path as desired):
 git clone <repo-url> ~/Workspace/DotFiles
 cd ~/Workspace/DotFiles
-# Bootstrap for personal (home) or work machine:
+# For personal (home) or work setup:
 ./install.sh home   # or 'work'
 ```
 
-Modules will be symlinked automatically into your $HOME (and ~/Library/Colors for iTerm2).
+## Automated Testing of install.sh
+
+Validate your installer in isolation:
+
+- **Container mode** (Ubuntu 22.04): requires Docker or Podman (auto-installs Podman if missing):
+  ```bash
+  scripts/test-install.sh
+  ```
+- **Local sandbox mode** (macOS/Linux host): runs installer against a temp $HOME:
+  ```bash
+  scripts/test-install.sh --local
+  ```
+
+Inspect the output; local mode prints the temporary HOME path for review.
+
+## Modules Layout
+
+Each top-level directory is a Stow module mapping into your home directory:
+```bash
+.
+├── Brewfile
+├── install.sh
+├── scripts/
+│   └── test-install.sh
+├── bin/            # custom scripts → ~/bin
+├── home/           # dotfiles → ~/.(gitconfig|vimrc|tmux.conf|...)
+├── config/         # ~/.config/ (nvim, ranger)
+├── iterm2/         # ~/Library/Colors/*.itermcolors
+├── firefox/        # ~/.mozilla/firefox/chrome/userChrome.css
+└── zsh/            # ~/.zshrc + ~/.zsh/
+```
 
 ## Managing Modules
-If you need to install or re‑install a single module (without running the full installer), you can use GNU Stow directly. Note that `~` is not expanded by `stow`, so use a full path:
+
+Restow an individual module without the full installer:
 ```bash
-DOTFILES_DIR="$HOME/Workspace/DotFiles"
-# Restow your zsh config:
+DOTFILES_DIR=~/Workspace/DotFiles
 stow --dir="$DOTFILES_DIR" --target="$HOME" --restow zsh
 ```
 
-# Manual Installation
-## iTerm2
-* Install the iterm2 color themes and setup them up on the profiles
+## Customizations
 
-## Firefox
-* Symlink over the userChrome.css into `%FIREFOX_PROFILE%/chrome/`
+### Shell & Prompt
+- Zsh with [Oh My Zsh](https://ohmyzsh.com/) and Powerlevel10k theme
+- Plugins managed via [zplug](https://github.com/zplug/zplug): git, jenv, forgit, zsh-syntax-highlighting
 
-### Tree Style Tabs Custom CSS
+### Aliases
+- `l` → `eza --icons --git -lag`
+- `r` → `ranger`
+- `v` → `nvim`
+- `cat` → `bat`
+- `ports` / `port` → `lsof -i`
+- `reload` → `source ~/.zshrc`
+- `duc` → `du -h --max-depth=1 | sort -h`
+- Git: `st`, `gpr`, `sshow`, `sapply`
+- `colorcodes` → display 256-color palette
+- `p10update` → update Powerlevel10k
+- `awsp` → AWS profile switcher
 
-```css
-/* Show title of unread tabs with red and italic font */
-:root.sidebar tab-item.unread .label-content {
-  color: red !important;
-  font-style: italic !important;
-}
+### Functions
+- `homebrew_root()` → returns Homebrew install prefix
+- `npm_global_install <pkg>` → idempotent npm global install
+- `dif file1 file2` → pretty diff via diff-so-fancy
 
-/* Add private browsing indicator per tab */
-:root.sidebar tab-item.private-browsing tab-label:before {
-  content: "🕶";
-}
+### FZF
+- Uses `fd` under the hood: `--type f --hidden --follow --exclude .git`
+- Keybindings: Ctrl-T (files), Ctrl-R (history), Alt-C (cd)
+- Inline previews, layout, and color via `$FZF_DEFAULT_OPTS`
 
-/* Change Tab Height */
-tab-item {
-  --tab-size: 30px !important;
-}
-tab-item  tab-item-substance {
-  height: var(--tab-size);
-}
+### Ranger
+- Custom `rc.conf` and Gruvbox colorscheme under `config/ranger`
 
-/* Highlight Active Tab */
-tab-item.active tab-item-substance {
-  height: 35px !important;
-}
-tab-item.active .background {
-  background-color: steelblue;
-  box-shadow: inset 0 0 10px #F3E1BE;
-  animation: pulsate 4s ease-out infinite;
-}
-@-webkit-keyframes pulsate {
-    0%   { box-shadow: inset 0 0 0 #F3E1BE; }
-    25%  { box-shadow: inset 0 0 5px #F3E1BE; }
-    50%  { box-shadow: inset 0 0 10px #F3E1BE; }
-    75%  { box-shadow: inset 0 0 5px #F3E1BE; }
-    100% { box-shadow: inset 0 0 0 #F3E1BE; }
-}
-tab-item.active .label-content {
-  font-weight: bold;
-  font-size: 12px;
-  text-shadow: 1px 1px black;
-}
-tab-item.active tab-twisty,
-tab-item.active .label-content,
-tab-item.active tab-counter {
-  color: #fff;
-}
+### Neovim
+- `init.vim` located in `config/nvim`
 
-/* Only show tab close button on hover */
-#tabbar tab-item tab-item-substance:not(:hover) tab-closebox {
-  display: none;
-}
-```
-## jenv
-While `jenv` will install via the Brew commons file, you'll need to make sure to run
-some additional setup defined on the jenv homepage to have it properly set `JAVA_HOME.
+### iTerm2
+- Gruvbox & Monokai `.itermcolors` under `iterm2/Library/Colors`
 
-## Resources
-* [gruvbox themes](https://github.com/gruvbox-community/gruvbox-contrib/)
+### Firefox
+- `userChrome.css` for toolbar & tab theming in `firefox/.mozilla/firefox/chrome`
 
-# Usage
-Given all the customization and various utils installed, we can keep track of various new items here to help refresh my memory until they're ingrained.
+## Contributing
 
-## fzf - fuzzy finder
-- `CTRL-T` - Search for files and directories with a given name
-- `CTRL-R` - Search command history
-- `ALT-C` - Search and `cd` into the directory
-
-## ranger - file tree UI
-- 'r' - open ranger
-
-
-## Improved Utils
-- `gping` - Graphical ping
-
-# To Fix
-- Initial run of install script gets hijacked when running the oh-my-zsh install
-- brew install requires sudo
-- homebrew/cask-fonts tap is deprecated
+Feedback, bug reports, and PRs are welcome to improve and expand these dotfiles.
